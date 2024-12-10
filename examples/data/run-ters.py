@@ -32,7 +32,7 @@ fn_geometry = Path('geometry.in'),
 ters.run_2d_grid(
 idx_mode = 110,
 tip_origin = (-0.000030, -1.696604, -4.6140),
-sys_origin = (0.0, 0.0, 0.0)
+sys_origin = (0.0, 0.0, 0.0),
 tip_height = 4.0,
 scan_range = (-6.5, 6.5, -6.5, 6.5),
 bins=5

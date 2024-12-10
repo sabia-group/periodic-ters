@@ -1,0 +1,2061 @@
+------------------------------------------------------------
+          Invoking FHI-aims ...
+
+          When using FHI-aims, please cite the following reference:
+
+            Volker Blum, Ralf Gehrke, Felix Hanke, Paula Havu,
+            Ville Havu, Xinguo Ren, Karsten Reuter, and Matthias Scheffler,
+            'Ab Initio Molecular Simulations with Numeric Atom-Centered Orbitals',
+            Computer Physics Communications 180, 2175-2196 (2009)
+
+          In addition, many other developments in FHI-aims are likely important for
+          your particular application. If so, please cite them. A partial list of references
+          is written at the end of this file. Thank you for giving credit to the authors
+          of these developments.
+
+          For general information about FHI-aims please find us at
+
+            https://fhi-aims.org
+
+          Online tutorials can be found at
+
+            https://fhi-aims-club.gitlab.io/tutorials/tutorials-overview/
+
+          For any questions about FHI-aims, please visit our slack channel at
+
+            https://fhi-aims.slack.com
+
+          and our main development and support site at
+
+            https://aims-git.rz-berlin.mpg.de .
+
+          The latter site, in particular, has a wiki to collect information, as well
+          as an issue tracker to log discussions, suggest improvements, and report issues
+          or bugs. https://aims-git.rz-berlin.mpg.de is also the main development site
+          of the project and all new and updated code versions can be obtained there.
+          Please send an email to aims-coordinators@fhi-berlin.mpg.de and we will add
+          you to these sites. They are for you and everyone is welcome there.
+
+------------------------------------------------------------
+
+
+
+  Date     :  20241122, Time     :  190213.943
+  Time zero on CPU 1             :   0.758970000000000E-01  s.
+  Internal wall clock time zero  :           501534133.943  s.
+
+  FHI-aims created a unique identifier for this run for later identification
+  aims_uuid : 5945EB98-DAD1-47A6-A616-B5A38E375C53
+
+  Build configuration of the current instance of FHI-aims
+  -------------------------------------------------------
+  FHI-aims version      : 240605
+  Commit number         : 83877e43c
+  CMake host system     : Linux-5.14.21-150500.55.65-default
+  CMake version         : 3.20.4
+  Fortran compiler      : /mpcdf/soft/SLE_15/packages/x86_64/intel_parallel_studio/2020.2/compilers_and_libraries_2020.2.254/linux/mpi/intel64/bin/mpiifort (Intel) version 19.1.2.20200623
+  Fortran compiler flags: -O3 -fp-model precise
+  C compiler            : /mpcdf/soft/SLE_15/packages/x86_64/intel/19.1.2/bin/icc (Intel) version 19.1.2.20200623
+  C compiler flags      : -O3 -ip -fp-model-precise -std=gnu99
+  C++ compiler          : /mpcdf/soft/SLE_15/packages/x86_64/intel/19.1.2/bin/icpc (Intel) version 19.1.2.20200623
+  C++ compiler flags    : -O3 -ip -fp-model precise
+  HIP compiler          :
+  HIP compiler flags    :
+  HIP GPU arch          :
+  Using MPI
+  Using ScaLAPACK
+  Using LibXC
+  Using i-PI
+  Using RLSY
+  Linking against: /mpcdf/soft/SLE_15/packages/x86_64/intel_oneapi/2021.2/mkl/latest/lib/intel64/libmkl_intel_lp64.so
+                   /mpcdf/soft/SLE_15/packages/x86_64/intel_oneapi/2021.2/mkl/latest/lib/intel64/libmkl_sequential.so
+                   /mpcdf/soft/SLE_15/packages/x86_64/intel_oneapi/2021.2/mkl/latest/lib/intel64/libmkl_core.so
+                   /mpcdf/soft/SLE_15/packages/x86_64/intel_oneapi/2021.2/mkl/latest/lib/intel64/libmkl_blacs_intelmpi_lp64.so
+                   /mpcdf/soft/SLE_15/packages/x86_64/intel_oneapi/2021.2/mkl/latest/lib/intel64/libmkl_scalapack_lp64.so
+
+  Using       72 parallel tasks.
+  Task        0 on host ravg1050 reporting.
+  Task        1 on host ravg1050 reporting.
+  Task        2 on host ravg1050 reporting.
+  Task        3 on host ravg1050 reporting.
+  Task        4 on host ravg1050 reporting.
+  Task        5 on host ravg1050 reporting.
+  Task        6 on host ravg1050 reporting.
+  Task        7 on host ravg1050 reporting.
+  Task        8 on host ravg1050 reporting.
+  Task        9 on host ravg1050 reporting.
+  Task       10 on host ravg1050 reporting.
+  Task       11 on host ravg1050 reporting.
+  Task       12 on host ravg1050 reporting.
+  Task       13 on host ravg1050 reporting.
+  Task       14 on host ravg1050 reporting.
+  Task       15 on host ravg1050 reporting.
+  Task       16 on host ravg1050 reporting.
+  Task       17 on host ravg1050 reporting.
+  Task       18 on host ravg1050 reporting.
+  Task       19 on host ravg1050 reporting.
+  Task       20 on host ravg1050 reporting.
+  Task       21 on host ravg1050 reporting.
+  Task       22 on host ravg1050 reporting.
+  Task       23 on host ravg1050 reporting.
+  Task       24 on host ravg1050 reporting.
+  Task       25 on host ravg1050 reporting.
+  Task       26 on host ravg1050 reporting.
+  Task       27 on host ravg1050 reporting.
+  Task       28 on host ravg1050 reporting.
+  Task       29 on host ravg1050 reporting.
+  Task       30 on host ravg1050 reporting.
+  Task       31 on host ravg1050 reporting.
+  Task       32 on host ravg1050 reporting.
+  Task       33 on host ravg1050 reporting.
+  Task       34 on host ravg1050 reporting.
+  Task       35 on host ravg1050 reporting.
+  Task       36 on host ravg1050 reporting.
+  Task       37 on host ravg1050 reporting.
+  Task       38 on host ravg1050 reporting.
+  Task       39 on host ravg1050 reporting.
+  Task       40 on host ravg1050 reporting.
+  Task       41 on host ravg1050 reporting.
+  Task       42 on host ravg1050 reporting.
+  Task       43 on host ravg1050 reporting.
+  Task       44 on host ravg1050 reporting.
+  Task       45 on host ravg1050 reporting.
+  Task       46 on host ravg1050 reporting.
+  Task       47 on host ravg1050 reporting.
+  Task       48 on host ravg1050 reporting.
+  Task       49 on host ravg1050 reporting.
+  Task       50 on host ravg1050 reporting.
+  Task       51 on host ravg1050 reporting.
+  Task       52 on host ravg1050 reporting.
+  Task       53 on host ravg1050 reporting.
+  Task       54 on host ravg1050 reporting.
+  Task       55 on host ravg1050 reporting.
+  Task       56 on host ravg1050 reporting.
+  Task       57 on host ravg1050 reporting.
+  Task       58 on host ravg1050 reporting.
+  Task       59 on host ravg1050 reporting.
+  Task       60 on host ravg1050 reporting.
+  Task       61 on host ravg1050 reporting.
+  Task       62 on host ravg1050 reporting.
+  Task       63 on host ravg1050 reporting.
+  Task       64 on host ravg1050 reporting.
+  Task       65 on host ravg1050 reporting.
+  Task       66 on host ravg1050 reporting.
+  Task       67 on host ravg1050 reporting.
+  Task       68 on host ravg1050 reporting.
+  Task       69 on host ravg1050 reporting.
+  Task       70 on host ravg1050 reporting.
+  Task       71 on host ravg1050 reporting.
+
+  Memory overcommitment is allowed on your operating system.
+
+  Obtaining array dimensions for all initial allocations:
+  
+  -----------------------------------------------------------------------
+  Parsing control.in (first pass over file, find array dimensions only).
+  The contents of control.in will be repeated verbatim below
+  unless switched off by setting 'verbatim_writeout .false.' .
+  in the first line of control.in .
+  -----------------------------------------------------------------------
+  
+  xc                                 pbe
+  relativistic                       atomic_zora scalar
+  spin                               none
+  charge                             0
+  k_grid				   1 1 1
+  vdw_correction_hirshfeld
+  compute_forces                     .true.
+  output_level                       MD_light
+  output				   dipole
+  sc_accuracy_rho                    1e-07
+  
+  pos_tip_origin          -0.000030 -1.696604 -4.614000
+  tip_molecule_distance   4.000000
+  rel_shift_from_tip      5.200000 -5.200000
+  nearfield               tipA_05_vh_ft_0049_3221meV_x1000.cube
+  ################################################################################
+  #
+  #  FHI-aims code project
+  #  VB, Fritz-Haber Institut, 2009
+  #
+  #  Suggested "light" defaults for Mg atom (to be pasted into control.in file)
+  #  Be sure to double-check any results obtained with these settings for post-processing,
+  #  e.g., with the "tight" defaults and larger basis sets.
+  #
+  ################################################################################
+    species        Mg
+  #     global species definitions
+      nucleus             12
+      mass                24.3050
+  #
+      l_hartree           4
+  #
+      cut_pot             4.0          1.5  1.0
+      basis_dep_cutoff    1e-4
+  #
+      radial_base         40 5.5
+      radial_multiplier   1
+      angular_grids       specified
+        division   0.7029   50
+        division   0.9689  110
+        division   1.1879  194
+        division   1.3129  302
+  #      division   1.4867  434
+  #      division   1.6018  590
+  #      division   1.8611  770
+  #      division   1.9576  974
+  #      division   2.2261 1202
+  #      outer_grid   974
+        outer_grid   302
+  ################################################################################
+  #
+  #  Definition of "minimal" basis
+  #
+  ################################################################################
+  #     valence basis states
+      valence      3  s   2.
+      valence      2  p   6.
+  #     ion occupancy
+      ion_occ      2  s   2.
+      ion_occ      2  p   6.
+  ################################################################################
+  #
+  #  Suggested additional basis functions. For production calculations,
+  #  uncomment them one after another (the most important basis functions are
+  #  listed first).
+  #
+  #  Constructed for dimers: 2.125 A, 2.375 A, 2.875 A, 3.375 A, 4.5 A
+  #
+  ################################################################################
+  #  "First tier" - improvements: -230.76 meV to -21.94 meV
+       hydro 2 p 1.5
+       ionic 3 d auto
+       hydro 3 s 2.4
+  #  "Second tier" - improvements: -5.43 meV to -1.64 meV
+  #     hydro 4 f 4.3
+  #     hydro 2 p 3.4
+  #     hydro 4 s 11.2
+  #     hydro 3 d 6.2
+  #  "Third tier" - improvements: -0.92 meV to -0.22 meV
+  #     hydro 2 s 0.6
+  #     hydro 3 p 4.8
+  #     hydro 4 f 7.4
+  #     hydro 5 g 6.6
+  #     hydro 2 p 1.6
+  #     hydro 3 d 1.8
+  #  "Fourth tier" - improvements: -0.09 meV to -0.05 meV
+  #     hydro 4 p 0.45
+  #     hydro 5 g 10.4
+  #     hydro 2 s 12.4
+  #     hydro 4 d 1.7
+  ################################################################################
+  #
+  #  FHI-aims code project
+  #  VB, Fritz-Haber Institut, 2009
+  #
+  #  Suggested "light" defaults for N atom (to be pasted into control.in file)
+  #  Be sure to double-check any results obtained with these settings for post-processing,
+  #  e.g., with the "tight" defaults and larger basis sets.
+  #
+  ################################################################################
+    species        N
+  #     global species definitions
+      nucleus             7
+      mass                14.0067
+  #
+      l_hartree           4
+  #
+      cut_pot             3.5  1.5  1.0
+      basis_dep_cutoff    1e-4
+  #
+      radial_base         35 5.0
+      radial_multiplier   1
+      angular_grids       specified
+        division   0.2599   50
+        division   0.4601  110
+        division   0.5885  194
+        division   0.6503  302
+  #      division   0.6939  434
+  #      division   0.7396  590
+  #      division   0.7632  770
+  #      division   0.8122  974
+  #      division   1.1604 1202
+  #      outer_grid  974
+        outer_grid  302
+  ################################################################################
+  #
+  #  Definition of "minimal" basis
+  #
+  ################################################################################
+  #     valence basis states
+      valence      2  s   2.
+      valence      2  p   3.
+  #     ion occupancy
+      ion_occ      2  s   1.
+      ion_occ      2  p   2.
+  ################################################################################
+  #
+  #  Suggested additional basis functions. For production calculations,
+  #  uncomment them one after another (the most important basis functions are
+  #  listed first).
+  #
+  #  Constructed for dimers: 1.0 A, 1.1 A, 1.5 A, 2.0 A, 3.0 A
+  #
+  ################################################################################
+  #  "First tier" - improvements: -1193.42 meV to -220.60 meV
+       hydro 2 p 1.8
+       hydro 3 d 6.8
+       hydro 3 s 5.8
+  #  "Second tier" - improvements: -80.21 meV to -6.86 meV
+  #     hydro 4 f 10.8
+  #     hydro 3 p 5.8
+  #     hydro 1 s 0.8
+  #     hydro 5 g 16
+  #     hydro 3 d 4.9
+  #  "Third tier" - improvements: -4.29 meV to -0.53 meV
+  #     hydro 3 s 16
+  #     ionic 2 p auto
+  #     hydro 3 d 6.6
+  #     hydro 4 f 11.6
+  #  "Fourth tier" - improvements: -0.75 meV to -0.25 meV
+  #     hydro 2 p 4.5
+  #     hydro 2 s 2.4
+  #     hydro 5 g 14.4
+  #     hydro 4 d 14.4
+  #     hydro 4 f 16.8
+  # Further basis functions - -0.21 meV and below
+  #     hydro 3 p 14.8
+  #     hydro 3 s 4.4
+  #     hydro 3 d 19.6
+  #     hydro 5 g 12.8
+  ################################################################################
+  #
+  #  FHI-aims code project
+  #  VB, Fritz-Haber Institut, 2009
+  #
+  #  Suggested "light" defaults for C atom (to be pasted into control.in file)
+  #  Be sure to double-check any results obtained with these settings for post-processing,
+  #  e.g., with the "tight" defaults and larger basis sets.
+  #
+  ################################################################################
+    species        C
+  #     global species definitions
+      nucleus             6
+      mass                12.0107
+  #
+      l_hartree           4
+  #
+      cut_pot             3.5  1.5  1.0
+      basis_dep_cutoff    1e-4
+  #
+      radial_base         34 5.0
+      radial_multiplier   1
+      angular_grids specified
+        division   0.3326   50
+        division   0.5710  110
+        division   0.7727  194
+        division   0.8772  302
+  #      division   0.9334  434
+  #      division   0.9625  590
+  #      division   0.9924  770
+  #      division   1.0230  974
+  #      division   1.4589 1202
+  #     outer_grid  974
+       outer_grid 302
+  ################################################################################
+  #
+  #  Definition of "minimal" basis
+  #
+  ################################################################################
+  #     valence basis states
+      valence      2  s   2.
+      valence      2  p   2.
+  #     ion occupancy
+      ion_occ      2  s   1.
+      ion_occ      2  p   1.
+  ################################################################################
+  #
+  #  Suggested additional basis functions. For production calculations,
+  #  uncomment them one after another (the most important basis functions are
+  #  listed first).
+  #
+  #  Constructed for dimers: 1.0 A, 1.25 A, 1.5 A, 2.0 A, 3.0 A
+  #
+  ################################################################################
+  #  "First tier" - improvements: -1214.57 meV to -155.61 meV
+       hydro 2 p 1.7
+       hydro 3 d 6
+       hydro 2 s 4.9
+  #  "Second tier" - improvements: -67.75 meV to -5.23 meV
+  #     hydro 4 f 9.8
+  #     hydro 3 p 5.2
+  #     hydro 3 s 4.3
+  #     hydro 5 g 14.4
+  #     hydro 3 d 6.2
+  #  "Third tier" - improvements: -2.43 meV to -0.60 meV
+  #     hydro 2 p 5.6
+  #     hydro 2 s 1.4
+  #     hydro 3 d 4.9
+  #     hydro 4 f 11.2
+  #  "Fourth tier" - improvements: -0.39 meV to -0.18 meV
+  #     hydro 2 p 2.1
+  #     hydro 5 g 16.4
+  #     hydro 4 d 13.2
+  #     hydro 3 s 13.6
+  #     hydro 4 f 17.6
+  #  Further basis functions - improvements: -0.08 meV and below
+  #     hydro 3 s 2
+  #     hydro 3 p 6
+  #     hydro 4 d 20
+  ################################################################################
+  #
+  #  FHI-aims code project
+  #  VB, Fritz-Haber Institut, 2009
+  #
+  #  Suggested "light" defaults for H atom (to be pasted into control.in file)
+  #  Be sure to double-check any results obtained with these settings for post-processing,
+  #  e.g., with the "tight" defaults and larger basis sets.
+  #
+  ################################################################################
+    species        H
+  #     global species definitions
+      nucleus             1
+      mass                1.00794
+  #
+      l_hartree           4
+  #
+      cut_pot             3.5  1.5  1.0
+      basis_dep_cutoff    1e-4
+  #
+      radial_base         24 5.0
+      radial_multiplier   1
+      angular_grids       specified
+        division   0.2421   50
+        division   0.3822  110
+        division   0.4799  194
+        division   0.5341  302
+  #      division   0.5626  434
+  #      division   0.5922  590
+  #      division   0.6542  770
+  #      division   0.6868 1202
+  #      outer_grid  770
+        outer_grid  302
+  ################################################################################
+  #
+  #  Definition of "minimal" basis
+  #
+  ################################################################################
+  #     valence basis states
+      valence      1  s   1.
+  #     ion occupancy
+      ion_occ      1  s   0.5
+  ################################################################################
+  #
+  #  Suggested additional basis functions. For production calculations,
+  #  uncomment them one after another (the most important basis functions are
+  #  listed first).
+  #
+  #  Basis constructed for dimers: 0.5 A, 0.7 A, 1.0 A, 1.5 A, 2.5 A
+  #
+  ################################################################################
+  #  "First tier" - improvements: -1014.90 meV to -62.69 meV
+       hydro 2 s 2.1
+       hydro 2 p 3.5
+  #  "Second tier" - improvements: -12.89 meV to -1.83 meV
+  #     hydro 1 s 0.85
+  #     hydro 2 p 3.7
+  #     hydro 2 s 1.2
+  #     hydro 3 d 7
+  #  "Third tier" - improvements: -0.25 meV to -0.12 meV
+  #     hydro 4 f 11.2
+  #     hydro 3 p 4.8
+  #     hydro 4 d 9
+  #     hydro 3 s 3.2
+  
+  -----------------------------------------------------------------------
+  Completed first pass over input file control.in .
+  -----------------------------------------------------------------------
+  
+  
+  -----------------------------------------------------------------------
+  Parsing geometry.in (first pass over file, find array dimensions only).
+  The contents of geometry.in will be repeated verbatim below
+  unless switched off by setting 'verbatim_writeout .false.' .
+  in the first line of geometry.in .
+  -----------------------------------------------------------------------
+  
+  lattice_vector 23.5155431200000002 0.0000000000000000 0.0000000000000000
+  lattice_vector 0.0000000000000000 23.5155431200000002 0.0000000000000000
+  lattice_vector 0.0000000000000000 0.0000000000000000 100.0000000000000000
+  atom 0.0000000000053846 -0.0000000000934330 0.0000000760396699 Mg
+  atom 0.0000000000002106 -2.0676730617574766 -0.0000000500627589 N
+  atom 2.0676693802429789 -0.0000000000683853 -0.0000000500107653 N
+  atom -0.0000000000235166 2.0676730591858878 -0.0000000500508853 N
+  atom -2.0676693798392600 -0.0000000000639965 -0.0000000500074223 N
+  atom 1.1072044135814150 -2.8867330413760413 0.0000001846648367 C
+  atom -1.1072044135891397 -2.8867330413603010 0.0000001846532411 C
+  atom 1.1072044189004482 2.8867330319406777 0.0000001844094474 C
+  atom -1.1072044188667212 2.8867330320535252 0.0000001844121737 C
+  atom 2.8867269618692837 -1.1072039534619418 0.0000001850072979 C
+  atom 2.8867269615699294 1.1072039534706033 0.0000001849415151 C
+  atom -2.8867269604012873 -1.1072039543003622 0.0000001849589059 C
+  atom -2.8867269601138679 1.1072039541949457 0.0000001849060007 C
+  atom 0.6849189827748973 -4.2705436250346471 -0.0000027845539546 C
+  atom -0.6849189819477202 -4.2705436239898402 -0.0000027845951368 C
+  atom 0.6849191315497604 4.2705437943378870 -0.0000027820912978 C
+  atom -0.6849191288276095 4.2705437905964327 -0.0000027821942046 C
+  atom 4.2705376376742787 -0.6849173861320500 -0.0000027984480650 C
+  atom 4.2705376379853490 0.6849173864349547 -0.0000027976137385 C
+  atom -4.2705376647575353 -0.6849174099025919 -0.0000027978231850 C
+  atom -4.2705376647623092 0.6849174100080582 -0.0000027969973378 C
+  atom 2.4381325074832958 -2.4381338464615712 -0.0000001195695088 C
+  atom -2.4381325077240117 -2.4381338464668647 -0.0000001195649201 C
+  atom -2.4381325086909689 2.4381338489953026 -0.0000001194835524 C
+  atom 2.4381325087033026 2.4381338492885791 -0.0000001194820885 C
+  atom 1.3526809360458310 -5.1311601001663600 0.0000279151221597 H
+  atom -1.3526809459827367 -5.1311601127358548 0.0000279150232467 H
+  atom 1.3526794480449793 5.1311581926124825 0.0000278913917111 H
+  atom -1.3526794824932118 5.1311582373184370 0.0000278922260912 H
+  atom 5.1311599719955971 -1.3526844811498528 0.0000280511952002 H
+  atom 5.1311599714440392 1.3526844784624272 0.0000280426005757 H
+  atom -5.1311596674416950 -1.3526842432643409 0.0000280450590192 H
+  atom -5.1311596697909874 1.3526842430037571 0.0000280363547964 H
+  atom 3.2096737304197109 3.2096707882840576 0.0000015328597108 H
+  atom 3.2096737535999944 -3.2096708074626767 0.0000015347829719 H
+  atom -3.2096737532728961 -3.2096708062799753 0.0000015347386430 H
+  atom -3.2096737331556624 3.2096707901581487 0.0020015338449182 H
+  homogeneous_field 0.0 0.0 -0.0100000000000000
+  set_vacuum_level 49.0000000000000000
+  
+  -----------------------------------------------------------------------
+  Completed first pass over input file geometry.in .
+  -----------------------------------------------------------------------
+  
+* Attention. An external embedding field
+* was specified for a periodic system.
+* At present, this combination is experimental,
+* and incorrect results could be obtained.
+* Please proceed with caution.
+
+  Basic array size parameters:
+  | Number of species                 :        4
+  | Number of atoms                   :       37
+  | Number of lattice vectors         :        3
+  | Max. basis fn. angular momentum   :        2
+  | Max. atomic/ionic basis occupied n:        3
+  | Max. number of basis fn. types    :        3
+  | Max. radial fns per species/type  :        4
+  | Max. logarithmic grid size        :     1334
+  | Max. radial integration grid size :       40
+  | Max. angular integration grid size:      302
+  | Max. angular grid division number :        8
+  | Radial grid for Hartree potential :     1334
+  | Number of spin channels           :        1
+  | External embedding multipoles     :        0
+
+------------------------------------------------------------
+          Reading file control.in.
+------------------------------------------------------------
+  XC: Using PBE gradient-corrected functionals.
+  Scalar relativistic treatment of kinetic energy: on-site free-atom approximation to ZORA.
+  Spin treatment: No spin polarisation.
+  Charge =   0.000000E+00: Neutral system requested explicitly.
+  Found k-point grid:         1         1         1
+  Forces will be computed.
+  Requested output level: MD_light
+  Dipole moment will be written out.
+  Convergence accuracy of self-consistent charge density:  0.1000E-06
+  Initial tip position [AA] =      -0.000030      -1.696604      -4.614000
+  Tip - molecule z-distance [AA] =       4.000000
+  Displacing the coordinates of the system relative to the tip position by [AA] in the xy plane =       5.200000      -5.200000
+  Cube origin before shifting =     -20.650000     -20.650000     -24.500000
+  Cube origin after shifting =     -20.649943     -17.443883      -8.221899
+ 
+  Reading configuration options for species Mg                  .
+  | Found nuclear charge :  12.0000
+  | Found atomic mass :    24.3050000000000      amu
+  | Found l_max for Hartree potential  :   4
+  | Found cutoff potl. onset [A], width [A], scale factor :    4.00000    1.50000    1.00000
+  | Threshold for basis-dependent cutoff potential is   0.100000E-03
+  | Found data for basic radial integration grid :    40 points, outermost radius =    5.500 A
+  | Found multiplier for basic radial grid :   1
+  | Found angular grid specification: user-specified.
+  | Specified grid contains     5 separate shells.
+  | Check grid settings after all constraints further below.
+  | Found free-atom valence shell :  3 s   2.000
+  | Found free-atom valence shell :  2 p   6.000
+  | Found free-ion valence shell :  2 s   2.000
+  | Found free-ion valence shell :  2 p   6.000
+  | Found hydrogenic basis function :  2 p   1.500
+  | Found ionic basis function :  3 d , default cutoff radius.
+  | Found hydrogenic basis function :  3 s   2.400
+ | Encountered keyword species, ending the description of species Mg                  .
+  Species Mg                  : Missing cutoff potential type.
+  Defaulting to exp(1/x)/(1-x)^2 type cutoff potential.
+  Species Mg: No 'logarithmic' tag. Using default grid for free atom:
+  | Default logarithmic grid data [bohr] : 0.1000E-03 0.1000E+03 0.1012E+01
+  | Will include ionic basis functions of  2.0-fold positive Mg                   ion.
+  Species Mg: On-site basis accuracy parameter (for Gram-Schmidt orthonormalisation) not specified.
+  Using default value basis_acc =  0.1000000E-03.
+  Species Mg                  : Using default innermost maximum threshold i_radial=  2 for radial functions.
+  Species Mg                  : Default cutoff onset for free atom density etc. : 0.40000000E+01 AA.
+  Species Mg                  : Basic radial grid will be enhanced according to radial_multiplier =   1, to contain    40 grid points.
+ 
+  Reading configuration options for species N                   .
+  | Found nuclear charge :   7.0000
+  | Found atomic mass :    14.0067000000000      amu
+  | Found l_max for Hartree potential  :   4
+  | Found cutoff potl. onset [A], width [A], scale factor :    3.50000    1.50000    1.00000
+  | Threshold for basis-dependent cutoff potential is   0.100000E-03
+  | Found data for basic radial integration grid :    35 points, outermost radius =    5.000 A
+  | Found multiplier for basic radial grid :   1
+  | Found angular grid specification: user-specified.
+  | Specified grid contains     5 separate shells.
+  | Check grid settings after all constraints further below.
+  | Found free-atom valence shell :  2 s   2.000
+  | Found free-atom valence shell :  2 p   3.000
+  | Found free-ion valence shell :  2 s   1.000
+  | Found free-ion valence shell :  2 p   2.000
+  | Found hydrogenic basis function :  2 p   1.800
+  | Found hydrogenic basis function :  3 d   6.800
+  | Found hydrogenic basis function :  3 s   5.800
+ | Encountered keyword species, ending the description of species N                   .
+  Species N                   : Missing cutoff potential type.
+  Defaulting to exp(1/x)/(1-x)^2 type cutoff potential.
+  Species N : No 'logarithmic' tag. Using default grid for free atom:
+  | Default logarithmic grid data [bohr] : 0.1000E-03 0.1000E+03 0.1012E+01
+  Species N : On-site basis accuracy parameter (for Gram-Schmidt orthonormalisation) not specified.
+  Using default value basis_acc =  0.1000000E-03.
+  Species N                   : Using default innermost maximum threshold i_radial=  2 for radial functions.
+  Species N                   : Default cutoff onset for free atom density etc. : 0.35000000E+01 AA.
+  Species N                   : Basic radial grid will be enhanced according to radial_multiplier =   1, to contain    35 grid points.
+ 
+  Reading configuration options for species C                   .
+  | Found nuclear charge :   6.0000
+  | Found atomic mass :    12.0107000000000      amu
+  | Found l_max for Hartree potential  :   4
+  | Found cutoff potl. onset [A], width [A], scale factor :    3.50000    1.50000    1.00000
+  | Threshold for basis-dependent cutoff potential is   0.100000E-03
+  | Found data for basic radial integration grid :    34 points, outermost radius =    5.000 A
+  | Found multiplier for basic radial grid :   1
+  | Found angular grid specification: user-specified.
+  | Specified grid contains     5 separate shells.
+  | Check grid settings after all constraints further below.
+  | Found free-atom valence shell :  2 s   2.000
+  | Found free-atom valence shell :  2 p   2.000
+  | Found free-ion valence shell :  2 s   1.000
+  | Found free-ion valence shell :  2 p   1.000
+  | Found hydrogenic basis function :  2 p   1.700
+  | Found hydrogenic basis function :  3 d   6.000
+  | Found hydrogenic basis function :  2 s   4.900
+ | Encountered keyword species, ending the description of species C                   .
+  Species C                   : Missing cutoff potential type.
+  Defaulting to exp(1/x)/(1-x)^2 type cutoff potential.
+  Species C : No 'logarithmic' tag. Using default grid for free atom:
+  | Default logarithmic grid data [bohr] : 0.1000E-03 0.1000E+03 0.1012E+01
+  Species C : On-site basis accuracy parameter (for Gram-Schmidt orthonormalisation) not specified.
+  Using default value basis_acc =  0.1000000E-03.
+  Species C                   : Using default innermost maximum threshold i_radial=  2 for radial functions.
+  Species C                   : Default cutoff onset for free atom density etc. : 0.35000000E+01 AA.
+  Species C                   : Basic radial grid will be enhanced according to radial_multiplier =   1, to contain    34 grid points.
+ 
+  Reading configuration options for species H                   .
+  | Found nuclear charge :   1.0000
+  | Found atomic mass :    1.00794000000000      amu
+  | Found l_max for Hartree potential  :   4
+  | Found cutoff potl. onset [A], width [A], scale factor :    3.50000    1.50000    1.00000
+  | Threshold for basis-dependent cutoff potential is   0.100000E-03
+  | Found data for basic radial integration grid :    24 points, outermost radius =    5.000 A
+  | Found multiplier for basic radial grid :   1
+  | Found angular grid specification: user-specified.
+  | Specified grid contains     5 separate shells.
+  | Check grid settings after all constraints further below.
+  | Found free-atom valence shell :  1 s   1.000
+  | Found free-ion valence shell :  1 s   0.500
+  | Found hydrogenic basis function :  2 s   2.100
+  | Found hydrogenic basis function :  2 p   3.500
+  Species H                   : Missing cutoff potential type.
+  Defaulting to exp(1/x)/(1-x)^2 type cutoff potential.
+  Species H : No 'logarithmic' tag. Using default grid for free atom:
+  | Default logarithmic grid data [bohr] : 0.1000E-03 0.1000E+03 0.1012E+01
+  Species H : On-site basis accuracy parameter (for Gram-Schmidt orthonormalisation) not specified.
+  Using default value basis_acc =  0.1000000E-03.
+  Species H                   : Using default innermost maximum threshold i_radial=  2 for radial functions.
+  Species H                   : Default cutoff onset for free atom density etc. : 0.35000000E+01 AA.
+  Species H                   : Basic radial grid will be enhanced according to radial_multiplier =   1, to contain    24 grid points.
+ 
+  Finished reading input file 'control.in'.
+ 
+------------------------------------------------------------
+
+
+------------------------------------------------------------
+          Reading geometry description geometry.in.
+------------------------------------------------------------
+  Homogeneous electric field specified. Values:  0.000000E+00  0.000000E+00 -0.100000E-01
+  Vacuum level in z-axis :   0.490000E+02
+  | The smallest distance between any two atoms is         1.08929380 AA.
+  | The first atom of this pair is atom number                     16 .
+  | The second atom of this pair is atom number                    28 .
+  | Wigner-Seitz cell of the first atom image           0     0     0 .
+  | (The Wigner-Seitz cell of the second atom is 0 0 0  by definition.)
+
+  Symmetry information by spglib:
+  | Precision set to  0.1E-04
+  | Number of Operations  : 1
+  | Space group           : 1
+  | International         : P1 000000 l
+  | Schoenflies           : C1^1
+  Input structure read successfully.
+  The structure contains       37 atoms,  and a total of        172.000 electrons.
+
+  Input geometry:
+  | Unit cell:
+  |       23.51554312        0.00000000        0.00000000
+  |        0.00000000       23.51554312        0.00000000
+  |        0.00000000        0.00000000      100.00000000
+  | Atomic structure:
+  |       Atom                x [A]            y [A]            z [A]
+  |    1: Species Mg            5.20000000       -5.20000000        0.00000008
+  |    2: Species N             5.20000000       -7.26767306       -0.00000005
+  |    3: Species N             7.26766938       -5.20000000       -0.00000005
+  |    4: Species N             5.20000000       -3.13232694       -0.00000005
+  |    5: Species N             3.13233062       -5.20000000       -0.00000005
+  |    6: Species C             6.30720441       -8.08673304        0.00000018
+  |    7: Species C             4.09279559       -8.08673304        0.00000018
+  |    8: Species C             6.30720442       -2.31326697        0.00000018
+  |    9: Species C             4.09279558       -2.31326697        0.00000018
+  |   10: Species C             8.08672696       -6.30720395        0.00000019
+  |   11: Species C             8.08672696       -4.09279605        0.00000018
+  |   12: Species C             2.31327304       -6.30720395        0.00000018
+  |   13: Species C             2.31327304       -4.09279605        0.00000018
+  |   14: Species C             5.88491898       -9.47054363       -0.00000278
+  |   15: Species C             4.51508102       -9.47054362       -0.00000278
+  |   16: Species C             5.88491913       -0.92945621       -0.00000278
+  |   17: Species C             4.51508087       -0.92945621       -0.00000278
+  |   18: Species C             9.47053764       -5.88491739       -0.00000280
+  |   19: Species C             9.47053764       -4.51508261       -0.00000280
+  |   20: Species C             0.92946234       -5.88491741       -0.00000280
+  |   21: Species C             0.92946234       -4.51508259       -0.00000280
+  |   22: Species C             7.63813251       -7.63813385       -0.00000012
+  |   23: Species C             2.76186749       -7.63813385       -0.00000012
+  |   24: Species C             2.76186749       -2.76186615       -0.00000012
+  |   25: Species C             7.63813251       -2.76186615       -0.00000012
+  |   26: Species H             6.55268094      -10.33116010        0.00002792
+  |   27: Species H             3.84731905      -10.33116011        0.00002792
+  |   28: Species H             6.55267945       -0.06884181        0.00002789
+  |   29: Species H             3.84732052       -0.06884176        0.00002789
+  |   30: Species H            10.33115997       -6.55268448        0.00002805
+  |   31: Species H            10.33115997       -3.84731552        0.00002804
+  |   32: Species H             0.06884033       -6.55268424        0.00002805
+  |   33: Species H             0.06884033       -3.84731576        0.00002804
+  |   34: Species H             8.40967373       -1.99032921        0.00000153
+  |   35: Species H             8.40967375       -8.40967081        0.00000153
+  |   36: Species H             1.99032625       -8.40967081        0.00000153
+  |   37: Species H             1.99032627       -1.99032921        0.00200153
+
+  Lattice parameters for 3D lattice (in Angstroms) :    23.515543   23.515543  100.000000
+  Angle(s) between unit vectors (in degrees)       :    90.000000   90.000000   90.000000
+
+
+  Quantities derived from the lattice vectors (in Angstrom^-1):
+  | Reciprocal lattice vector 1:  0.267193  0.000000  0.000000
+  | Reciprocal lattice vector 2:  0.000000  0.267193  0.000000
+  | Reciprocal lattice vector 3:  0.000000  0.000000  0.062832
+  | Unit cell volume                               :   0.552981E+05  Angstrom^3
+
+  Slab Identifier: This is likely something in a big box.
+ 
+  Finished reading input file 'geometry.in'.
+ 
+
+ 
+  Consistency checks for stacksize environment parameter are next.
+ 
+  | Maximum stacksize for task 0: unlimited
+  | Maximum stacksize for task 1: unlimited
+  | Maximum stacksize for task 2: unlimited
+  | Maximum stacksize for task 3: unlimited
+  | Maximum stacksize for task 4: unlimited
+  | Maximum stacksize for task 5: unlimited
+  | Maximum stacksize for task 6: unlimited
+  | Maximum stacksize for task 7: unlimited
+  | Maximum stacksize for task 8: unlimited
+  | Maximum stacksize for task 9: unlimited
+  | Maximum stacksize for task 10: unlimited
+  | Maximum stacksize for task 11: unlimited
+  | Maximum stacksize for task 12: unlimited
+  | Maximum stacksize for task 13: unlimited
+  | Maximum stacksize for task 14: unlimited
+  | Maximum stacksize for task 15: unlimited
+  | Maximum stacksize for task 16: unlimited
+  | Maximum stacksize for task 17: unlimited
+  | Maximum stacksize for task 18: unlimited
+  | Maximum stacksize for task 19: unlimited
+  | Maximum stacksize for task 20: unlimited
+  | Maximum stacksize for task 21: unlimited
+  | Maximum stacksize for task 22: unlimited
+  | Maximum stacksize for task 23: unlimited
+  | Maximum stacksize for task 24: unlimited
+  | Maximum stacksize for task 25: unlimited
+  | Maximum stacksize for task 26: unlimited
+  | Maximum stacksize for task 27: unlimited
+  | Maximum stacksize for task 28: unlimited
+  | Maximum stacksize for task 29: unlimited
+  | Maximum stacksize for task 30: unlimited
+  | Maximum stacksize for task 31: unlimited
+  | Maximum stacksize for task 32: unlimited
+  | Maximum stacksize for task 33: unlimited
+  | Maximum stacksize for task 34: unlimited
+  | Maximum stacksize for task 35: unlimited
+  | Maximum stacksize for task 36: unlimited
+  | Maximum stacksize for task 37: unlimited
+  | Maximum stacksize for task 38: unlimited
+  | Maximum stacksize for task 39: unlimited
+  | Maximum stacksize for task 40: unlimited
+  | Maximum stacksize for task 41: unlimited
+  | Maximum stacksize for task 42: unlimited
+  | Maximum stacksize for task 43: unlimited
+  | Maximum stacksize for task 44: unlimited
+  | Maximum stacksize for task 45: unlimited
+  | Maximum stacksize for task 46: unlimited
+  | Maximum stacksize for task 47: unlimited
+  | Maximum stacksize for task 48: unlimited
+  | Maximum stacksize for task 49: unlimited
+  | Maximum stacksize for task 50: unlimited
+  | Maximum stacksize for task 51: unlimited
+  | Maximum stacksize for task 52: unlimited
+  | Maximum stacksize for task 53: unlimited
+  | Maximum stacksize for task 54: unlimited
+  | Maximum stacksize for task 55: unlimited
+  | Maximum stacksize for task 56: unlimited
+  | Maximum stacksize for task 57: unlimited
+  | Maximum stacksize for task 58: unlimited
+  | Maximum stacksize for task 59: unlimited
+  | Maximum stacksize for task 60: unlimited
+  | Maximum stacksize for task 61: unlimited
+  | Maximum stacksize for task 62: unlimited
+  | Maximum stacksize for task 63: unlimited
+  | Maximum stacksize for task 64: unlimited
+  | Maximum stacksize for task 65: unlimited
+  | Maximum stacksize for task 66: unlimited
+  | Maximum stacksize for task 67: unlimited
+  | Maximum stacksize for task 68: unlimited
+  | Maximum stacksize for task 69: unlimited
+  | Maximum stacksize for task 70: unlimited
+  | Maximum stacksize for task 71: unlimited
+  | Current stacksize for task 0: unlimited
+  | Current stacksize for task 1: unlimited
+  | Current stacksize for task 2: unlimited
+  | Current stacksize for task 3: unlimited
+  | Current stacksize for task 4: unlimited
+  | Current stacksize for task 5: unlimited
+  | Current stacksize for task 6: unlimited
+  | Current stacksize for task 7: unlimited
+  | Current stacksize for task 8: unlimited
+  | Current stacksize for task 9: unlimited
+  | Current stacksize for task 10: unlimited
+  | Current stacksize for task 11: unlimited
+  | Current stacksize for task 12: unlimited
+  | Current stacksize for task 13: unlimited
+  | Current stacksize for task 14: unlimited
+  | Current stacksize for task 15: unlimited
+  | Current stacksize for task 16: unlimited
+  | Current stacksize for task 17: unlimited
+  | Current stacksize for task 18: unlimited
+  | Current stacksize for task 19: unlimited
+  | Current stacksize for task 20: unlimited
+  | Current stacksize for task 21: unlimited
+  | Current stacksize for task 22: unlimited
+  | Current stacksize for task 23: unlimited
+  | Current stacksize for task 24: unlimited
+  | Current stacksize for task 25: unlimited
+  | Current stacksize for task 26: unlimited
+  | Current stacksize for task 27: unlimited
+  | Current stacksize for task 28: unlimited
+  | Current stacksize for task 29: unlimited
+  | Current stacksize for task 30: unlimited
+  | Current stacksize for task 31: unlimited
+  | Current stacksize for task 32: unlimited
+  | Current stacksize for task 33: unlimited
+  | Current stacksize for task 34: unlimited
+  | Current stacksize for task 35: unlimited
+  | Current stacksize for task 36: unlimited
+  | Current stacksize for task 37: unlimited
+  | Current stacksize for task 38: unlimited
+  | Current stacksize for task 39: unlimited
+  | Current stacksize for task 40: unlimited
+  | Current stacksize for task 41: unlimited
+  | Current stacksize for task 42: unlimited
+  | Current stacksize for task 43: unlimited
+  | Current stacksize for task 44: unlimited
+  | Current stacksize for task 45: unlimited
+  | Current stacksize for task 46: unlimited
+  | Current stacksize for task 47: unlimited
+  | Current stacksize for task 48: unlimited
+  | Current stacksize for task 49: unlimited
+  | Current stacksize for task 50: unlimited
+  | Current stacksize for task 51: unlimited
+  | Current stacksize for task 52: unlimited
+  | Current stacksize for task 53: unlimited
+  | Current stacksize for task 54: unlimited
+  | Current stacksize for task 55: unlimited
+  | Current stacksize for task 56: unlimited
+  | Current stacksize for task 57: unlimited
+  | Current stacksize for task 58: unlimited
+  | Current stacksize for task 59: unlimited
+  | Current stacksize for task 60: unlimited
+  | Current stacksize for task 61: unlimited
+  | Current stacksize for task 62: unlimited
+  | Current stacksize for task 63: unlimited
+  | Current stacksize for task 64: unlimited
+  | Current stacksize for task 65: unlimited
+  | Current stacksize for task 66: unlimited
+  | Current stacksize for task 67: unlimited
+  | Current stacksize for task 68: unlimited
+  | Current stacksize for task 69: unlimited
+  | Current stacksize for task 70: unlimited
+  | Current stacksize for task 71: unlimited
+ 
+  Consistency checks for the contents of control.in are next.
+ 
+  MPI_IN_PLACE appears to work with this MPI implementation.
+  | Keeping use_mpi_in_place .true. (see manual).
+  Target number of points in a grid batch is not set. Defaulting to  100
+  Method for grid partitioning is not set. Defaulting to parallel hash+maxmin partitioning.
+  Batch size limit is not set. Defaulting to    200
+  By default, will store active basis functions for each batch.
+  If in need of memory, prune_basis_once .false. can be used to disable this option.
+  communication_type for Hartree potential was not specified.
+  Defaulting to calc_hartree .
+  Defaulting to Pulay charge density mixer.
+  Pulay mixer: Number of relevant iterations not set.
+  Defaulting to    8 iterations.
+  Pulay mixer: Number of initial linear mixing iterations not set.
+  Defaulting to    0 iterations.
+  Work space size for distributed Hartree potential not set.
+  Defaulting to   0.200000E+03 MB.
+  Mixing parameter for charge density mixing has not been set.
+  Using default: charge_mix_param =     0.0500.
+  The mixing parameter will be adjusted in iteration number     2 of each s.c.f. cycle (i.e., each geometry step).
+  Algorithm-dependent basis array size parameters:
+  | n_max_pulay                         :        8
+  Maximum number of self-consistency iterations not provided.
+  Presetting  1000 iterations.
+  Presetting      1001 iterations before the initial mixing cycle
+  is restarted anyway using the sc_init_iter criterion / keyword.
+  Presetting a factor      1.000 between actual scf density residual
+  and density convergence criterion sc_accuracy_rho below which sc_init_iter
+  takes no effect.
+  Geometry relaxation not requested: no relaxation will be performed.
+  Forces evaluation will include force correction term due to incomplete self-consistency (default).
+  Force calculation: scf convergence accuracy of forces not set.
+  Defaulting to 'sc_accuracy_forces not_checked'.
+  No accuracy limit for integral partition fn. given. Defaulting to  0.1000E-14.
+  No threshold value for u(r) in integrations given. Defaulting to  0.1000E-05.
+  No occupation type (smearing scheme) given. Defaulting to Gaussian broadening, width =  0.1000E-01 eV.
+  The width will be adjusted in iteration number     2 of each s.c.f. cycle (i.e., each geometry step).
+  No accuracy for occupation numbers given. Defaulting to  0.1000E-12.
+  No threshold value for occupation numbers given. Defaulting to  0.0000E+00.
+  No accuracy for fermi level given. Defaulting to  0.1000E-19.
+  Maximum # of iterations to find E_F not set. Defaulting to  200.
+  Preferred method for the eigenvalue solver ('KS_method') not specified in 'control.in'.
+  Calling BLACS routine to test compilation state
+  Since ScaLAPACK support is enabled, defaulting to ELPA (via ELSI).
+  Will not use alltoall communication since running on < 1024 CPUs.
+  Threshold for basis singularities not set.
+  Default threshold for basis singularities:  0.1000E-04
+  partition_type (choice of integration weights) for integrals was not specified.
+  | Using a version of the partition function of Stratmann and coworkers ('stratmann_sparse').
+  | At each grid point, the set of atoms used to build the partition table is smoothly restricted to
+  | only those atoms whose free-atom density would be non-zero at that grid point.
+  Partitioning for Hartree potential was not defined. Using partition_type for integrals.
+  | Adjusted default value of keyword multip_moments_threshold to:       0.10000000E-11
+  | This value may affect high angular momentum components of the Hartree potential in periodic systems.
+  No q(lm)/r^(l+1) cutoff set for long-range Hartree potential.
+  | Using default value of  0.100000E-09 .
+  | Verify using the multipole_threshold keyword.
+  Defaulting to new monopole extrapolation.
+  Density update method: automatic selection selected.
+  Using density matrix based charge density update.
+  Using density matrix based charge density update.
+  Using packed matrix style: index .
+  Defaulting to use time-reversal symmetry for k-point grid.
+  Charge integration errors on the 3D integration grid will be compensated
+  by explicit normalization and distribution of residual charges.
+  Use the "compensate_multipole_errors" flag to change this behaviour.
+  Using the following vdw_convergence_threshold for supercell sums
+  over the Tkatchenko-Scheffler correction:  0.100000E-05 eV.
+  Found no potential conflicts with setting 'use_local_index' for this calculation.
+  Flag 'use_local_index' has not been set.
+  Testing whether we classify this calculation as large-scale ...
+  The calculation contains less than 100 atoms. This is most likely not a large-scale calculation.
+  Not setting 'use_local_index'.
+ 
+  Consistency checks for the contents of geometry.in are next.
+ 
+
+  Range separation radius for Ewald summation (hartree_convergence_parameter):      5.00000000 bohr.
+  Number of empty states per atom not set in control.in - providing a guess from actual geometry.
+  | Total number of empty states used during s.c.f. cycle:       93
+  If you use a very high smearing, use empty_states (per atom!) in control.in to increase this value.
+
+  Structure-dependent array size parameters: 
+  | Maximum number of distinct radial functions  :       22
+  | Maximum number of basis functions            :      411
+  | Number of Kohn-Sham states (occupied + empty):      179
+------------------------------------------------------------
+  After read_input_data [GB]:    493.60
+
+  Performing system and environment tests:
+  | Environment variable OMP_NUM_THREADS correctly set to 1.
+  | Checking for ScaLAPACK...
+  | Testing pdtran()...
+  | All pdtran() tests passed.
+  After prepare_system [GB]:    493.33
+
+------------------------------------------------------------
+          Preparing all fixed parts of the calculation.
+------------------------------------------------------------
+  Determining machine precision:
+    2.225073858507201E-308
+  Setting up grids for atomic and cluster calculations.
+
+  Creating wave function, potential, and density for free atoms.
+  Runtime choices for atomic solver:
+  | atomic solver xc        : PBE
+  | compute density gradient: 1
+  | compute kinetic density : F
+
+  Species: Mg
+
+  List of occupied orbitals and eigenvalues:
+    n    l              occ      energy [Ha]    energy [eV]
+    1    0           2.0000       -46.359170     -1261.4972
+    2    0           2.0000        -2.927498       -79.6613
+    3    0           2.0000        -0.167982        -4.5710
+    2    1           6.0000        -1.706030       -46.4234
+
+
+  Species: N
+
+  List of occupied orbitals and eigenvalues:
+    n    l              occ      energy [Ha]    energy [eV]
+    1    0           2.0000       -14.143973      -384.8771
+    2    0           2.0000        -0.682008       -18.5584
+    2    1           3.0000        -0.259605        -7.0642
+
+
+  Species: C
+
+  List of occupied orbitals and eigenvalues:
+    n    l              occ      energy [Ha]    energy [eV]
+    1    0           2.0000       -10.046810      -273.3876
+    2    0           2.0000        -0.503128       -13.6908
+    2    1           2.0000        -0.191849        -5.2205
+
+
+  Species: H
+
+  List of occupied orbitals and eigenvalues:
+    n    l              occ      energy [Ha]    energy [eV]
+    1    0           1.0000        -0.237593        -6.4652
+
+
+  Adding cutoff potential to free-atom effective potential.
+  Creating fixed part of basis set: Ionic, confined, hydrogenic.
+ 
+  Mg                   ion:
+
+  List of free ionic orbitals and eigenvalues:
+    n    l      energy [Ha]    energy [eV]
+    1    0       -47.122987     -1282.2817
+    2    0        -3.674099       -99.9773
+    2    1        -2.451441       -66.7071
+
+
+  List of ionic basis orbitals and eigenvalues:
+    n    l      energy [Ha]    energy [eV]    outer radius [A]
+    3    2        -0.253797        -6.9062       5.100062
+
+ 
+  Mg                   hydrogenic:
+ 
+  List of hydrogenic basis orbitals: 
+    n    l      effective z      eigenvalue [eV]  inner max. [A]     outer max. [A]     outer radius [A]   
+    2    1         1.500000        -7.5955           1.395712           1.395712           5.100062
+    3    0         2.400000        -8.0111           0.162319           2.734035           5.100062
+ 
+ 
+  N                    hydrogenic:
+ 
+  List of hydrogenic basis orbitals: 
+    n    l      effective z      eigenvalue [eV]  inner max. [A]     outer max. [A]     outer radius [A]   
+    2    1         1.800000       -10.9749           1.177451           1.177451           4.573712
+    3    2         6.800000       -69.9026           0.704619           0.704619           3.538137
+    3    0         5.800000       -50.8545           0.067388           1.191934           4.250239
+ 
+ 
+  C                    hydrogenic:
+ 
+  List of hydrogenic basis orbitals: 
+    n    l      effective z      eigenvalue [eV]  inner max. [A]     outer max. [A]     outer radius [A]   
+    2    1         1.700000        -9.7616           1.230570           1.230570           4.607917
+    3    2         6.000000       -54.4224           0.792453           0.792453           3.883070
+    2    0         4.900000       -81.6679           0.082559           0.562749           3.078220
+ 
+ 
+  H                    hydrogenic:
+ 
+  List of hydrogenic basis orbitals: 
+    n    l      effective z      eigenvalue [eV]  inner max. [A]     outer max. [A]     outer radius [A]   
+    2    0         2.100000       -14.9728           0.193243           1.317208           4.583499
+    2    1         3.500000       -41.6669           0.602369           0.602369           3.723403
+ 
+  Creating atomic-like basis functions for current effective potential.
+
+  Species Mg                  :
+
+  List of atomic basis orbitals and eigenvalues:
+    n    l      energy [Ha]    energy [eV]    outer radius [A]
+    1    0       -46.359170     -1261.4972       0.921046
+    2    0        -2.927498       -79.6613       3.621735
+    3    0        -0.167982        -4.5710       5.100062
+    2    1        -1.706030       -46.4234       4.404175
+
+
+  Species N                   :
+
+  List of atomic basis orbitals and eigenvalues:
+    n    l      energy [Ha]    energy [eV]    outer radius [A]
+    1    0       -14.143973      -384.8771       1.637919
+    2    0        -0.682008       -18.5584       4.463241
+    2    1        -0.259605        -7.0642       4.518138
+
+
+  Species C                   :
+
+  List of atomic basis orbitals and eigenvalues:
+    n    l      energy [Ha]    energy [eV]    outer radius [A]
+    1    0       -10.046810      -273.3876       1.934409
+    2    0        -0.503128       -13.6908       4.496620
+    2    1        -0.191849        -5.2205       4.551928
+
+
+  Species H                   :
+
+  List of atomic basis orbitals and eigenvalues:
+    n    l      energy [Ha]    energy [eV]    outer radius [A]
+    1    0        -0.237593        -6.4652       4.527807
+
+  Assembling full basis from fixed parts.
+  | Species Mg :   atomic orbital   1 s accepted.
+  | Species Mg :   atomic orbital   2 s accepted.
+  | Species Mg :   atomic orbital   3 s accepted.
+  | Species Mg :    hydro orbital   3 s accepted.
+  | Species Mg :   atomic orbital   2 p accepted.
+  | Species Mg :    hydro orbital   2 p accepted.
+  | Species Mg :    ionic orbital   3 d accepted.
+  | Species N :   atomic orbital   1 s accepted.
+  | Species N :    hydro orbital   3 s accepted.
+  | Species N :   atomic orbital   2 s accepted.
+  | Species N :   atomic orbital   2 p accepted.
+  | Species N :    hydro orbital   2 p accepted.
+  | Species N :    hydro orbital   3 d accepted.
+  | Species C :   atomic orbital   1 s accepted.
+  | Species C :    hydro orbital   2 s accepted.
+  | Species C :   atomic orbital   2 s accepted.
+  | Species C :   atomic orbital   2 p accepted.
+  | Species C :    hydro orbital   2 p accepted.
+  | Species C :    hydro orbital   3 d accepted.
+  | Species H :   atomic orbital   1 s accepted.
+  | Species H :    hydro orbital   2 s accepted.
+  | Species H :    hydro orbital   2 p accepted.
+ 
+  Basis size parameters after reduction:
+  | Total number of radial functions:       22
+  | Total number of basis functions :      411
+ 
+  Per-task memory consumption for arrays in subroutine allocate_ext:
+  |           7.526300MB.
+  Testing on-site integration grid accuracy.
+  |  Species  Function  <phi|h_atom|phi> (log., in eV)  <phi|h_atom|phi> (rad., in eV)
+           1        1              -1261.4972086064              -1261.4966102663
+           1        2                -79.6612686792                -79.6612661850
+           1        3                 -4.5766449847                 -4.5764463354
+           1        4                  4.2856803862                  4.2813226631
+           1        5                -46.4234362291                -46.4234361907
+           1        6                 -0.5282558506                 -0.5281575826
+           1        7                  4.0144889854                  4.0133736295
+           2        8               -384.8770852097               -384.8770238657
+           2        9                 12.5754985572                 12.5755902269
+           2       10                -15.7673946340                -15.7673131149
+           2       11                 -7.0647024644                 -7.0651952861
+           2       12                  8.8117910312                  8.7928686445
+           2       13                 35.9641313274                 35.9643080893
+           3       14               -273.3876219248               -273.3875919908
+           3       15                -10.7204647119                -10.7200987605
+           3       16                 17.5782951162                 17.5752355731
+           3       17                 -5.2222267983                 -5.2237454471
+           3       18                  8.6866956284                  8.6634852736
+           3       19                 27.4984676161                 27.4985577266
+           4       20                 -6.4664147733                 -6.4652229287
+           4       21                 13.7099062243                 13.7158503352
+           4       22                 25.2661739479                 25.2663166526
+
+  Preparing densities etc. for the partition functions (integrals / Hartree potential).
+
+  Preparations completed.
+  max(cpu_time)          :      0.252 s.
+  Wall clock time (cpu1) :      0.266 s.
+------------------------------------------------------------
+  After prepare_scf [GB]:    491.48
+
+  Initializing index lists of integration centers etc. from given atomic structure:
+  Mapping all atomic coordinates to central unit cell.
+
+  Initializing the k-points
+  Using symmetry for reducing the k-points
+  | k-points reduced from:        1 to        1
+  | Number of k-points                             :         1
+  The eigenvectors in the calculations are REAL.
+  | Number of basis functions in the Hamiltonian integrals :       621
+  | Number of basis functions in a single unit cell        :       411
+  | Number of centers in hartree potential         :        81
+  | Number of centers in hartree multipole         :        37
+  | Number of centers in electron density summation:        37
+  | Number of centers in basis integrals           :        60
+  | Number of centers in integrals                 :        60
+  | Number of centers in hamiltonian               :        37
+  | Consuming          0 KiB for k_phase.
+  | Number of super-cells (origin) [n_cells]                     :          75
+  | Number of super-cells (after PM_index) [n_cells]             :           5
+  | Number of super-cells in hamiltonian [n_cells_in_hamiltonian]:           2
+  | Size of matrix packed + index [n_hamiltonian_matrix_size] :       79255
+  After initialize_bc_dependent_lists [GB]:    491.43
+
+------------------------------------------------------------
+          Begin self-consistency loop: Initialization.
+
+          Date     :  20241122, Time     :  190215.590
+------------------------------------------------------------
+  Available memory per node after initialize_hartree_non_periodic_ewald [GB]:    491.43
+  | Estimated reciprocal-space cutoff momentum G_max:         1.84432723 bohr^-1 .
+  | Reciprocal lattice points for long-range Hartree potential:   39494
+  Available memory per node after initialize_recip_hartree_potential [GB]:    491.42
+  Using simple linear distribution as default method for k-point parallelism.
+  * Using 72 tasks for Scalapack Eigenvalue solver.
+  Detailed listing of tasks and assigned k-points:
+   Task     0 k-point     1 on ravg1050
+   Task     1 k-point     1 on ravg1050
+   Task     2 k-point     1 on ravg1050
+   Task     3 k-point     1 on ravg1050
+   Task     4 k-point     1 on ravg1050
+   Task     5 k-point     1 on ravg1050
+   Task     6 k-point     1 on ravg1050
+   Task     7 k-point     1 on ravg1050
+   Task     8 k-point     1 on ravg1050
+   Task     9 k-point     1 on ravg1050
+   Task    10 k-point     1 on ravg1050
+   Task    11 k-point     1 on ravg1050
+   Task    12 k-point     1 on ravg1050
+   Task    13 k-point     1 on ravg1050
+   Task    14 k-point     1 on ravg1050
+   Task    15 k-point     1 on ravg1050
+   Task    16 k-point     1 on ravg1050
+   Task    17 k-point     1 on ravg1050
+   Task    18 k-point     1 on ravg1050
+   Task    19 k-point     1 on ravg1050
+   Task    20 k-point     1 on ravg1050
+   Task    21 k-point     1 on ravg1050
+   Task    22 k-point     1 on ravg1050
+   Task    23 k-point     1 on ravg1050
+   Task    24 k-point     1 on ravg1050
+   Task    25 k-point     1 on ravg1050
+   Task    26 k-point     1 on ravg1050
+   Task    27 k-point     1 on ravg1050
+   Task    28 k-point     1 on ravg1050
+   Task    29 k-point     1 on ravg1050
+   Task    30 k-point     1 on ravg1050
+   Task    31 k-point     1 on ravg1050
+   Task    32 k-point     1 on ravg1050
+   Task    33 k-point     1 on ravg1050
+   Task    34 k-point     1 on ravg1050
+   Task    35 k-point     1 on ravg1050
+   Task    36 k-point     1 on ravg1050
+   Task    37 k-point     1 on ravg1050
+   Task    38 k-point     1 on ravg1050
+   Task    39 k-point     1 on ravg1050
+   Task    40 k-point     1 on ravg1050
+   Task    41 k-point     1 on ravg1050
+   Task    42 k-point     1 on ravg1050
+   Task    43 k-point     1 on ravg1050
+   Task    44 k-point     1 on ravg1050
+   Task    45 k-point     1 on ravg1050
+   Task    46 k-point     1 on ravg1050
+   Task    47 k-point     1 on ravg1050
+   Task    48 k-point     1 on ravg1050
+   Task    49 k-point     1 on ravg1050
+   Task    50 k-point     1 on ravg1050
+   Task    51 k-point     1 on ravg1050
+   Task    52 k-point     1 on ravg1050
+   Task    53 k-point     1 on ravg1050
+   Task    54 k-point     1 on ravg1050
+   Task    55 k-point     1 on ravg1050
+   Task    56 k-point     1 on ravg1050
+   Task    57 k-point     1 on ravg1050
+   Task    58 k-point     1 on ravg1050
+   Task    59 k-point     1 on ravg1050
+   Task    60 k-point     1 on ravg1050
+   Task    61 k-point     1 on ravg1050
+   Task    62 k-point     1 on ravg1050
+   Task    63 k-point     1 on ravg1050
+   Task    64 k-point     1 on ravg1050
+   Task    65 k-point     1 on ravg1050
+   Task    66 k-point     1 on ravg1050
+   Task    67 k-point     1 on ravg1050
+   Task    68 k-point     1 on ravg1050
+   Task    69 k-point     1 on ravg1050
+   Task    70 k-point     1 on ravg1050
+   Task    71 k-point     1 on ravg1050
+  K-point:     1 Tasks:    72 split into      9 X      8 BLACS grid
+  Calculating block size based on n_basis =          411  max_nprow =            9  max_npcol =            8
+  ScaLAPACK block size set to:           16
+  Allocating        0.023 MB for ovlp
+  Allocating        0.023 MB for ham
+  Allocating        0.023 MB for eigenvec
+  Required Scalapack workspace - INTEGER:            1  REAL:             1
+  Available memory per node after initialize_scalapack [GB]:    491.41
+  Available memory per node after aims_elsi_init_scf [GB]:    491.40
+  Available memory per node after initialize_fixed_grids [GB]:    491.40
+  Partitioning the integration grid into batches with parallel hashing+maxmin method.
+  | Number of batches:     1836
+  | Maximal batch size:     200
+  | Minimal batch size:       1
+  | Average batch size:     110.420
+  | Standard deviation of batch sizes:      34.497
+
+  Integration load balanced across    72 MPI tasks.
+  Work distribution over tasks is as follows:
+  Task     0 has       2895 integration points.
+  Task     1 has       2753 integration points.
+  Task     2 has       2792 integration points.
+  Task     3 has       2903 integration points.
+  Task     4 has       2782 integration points.
+  Task     5 has       2829 integration points.
+  Task     6 has       2862 integration points.
+  Task     7 has       2777 integration points.
+  Task     8 has       2784 integration points.
+  Task     9 has       2781 integration points.
+  Task    10 has       2789 integration points.
+  Task    11 has       2834 integration points.
+  Task    12 has       2781 integration points.
+  Task    13 has       2752 integration points.
+  Task    14 has       2827 integration points.
+  Task    15 has       2755 integration points.
+  Task    16 has       2826 integration points.
+  Task    17 has       2752 integration points.
+  Task    18 has       2808 integration points.
+  Task    19 has       2831 integration points.
+  Task    20 has       2830 integration points.
+  Task    21 has       2804 integration points.
+  Task    22 has       2786 integration points.
+  Task    23 has       2748 integration points.
+  Task    24 has       2783 integration points.
+  Task    25 has       2821 integration points.
+  Task    26 has       2808 integration points.
+  Task    27 has       2832 integration points.
+  Task    28 has       2912 integration points.
+  Task    29 has       2787 integration points.
+  Task    30 has       2769 integration points.
+  Task    31 has       2747 integration points.
+  Task    32 has       2829 integration points.
+  Task    33 has       2785 integration points.
+  Task    34 has       2811 integration points.
+  Task    35 has       2792 integration points.
+  Task    36 has       2797 integration points.
+  Task    37 has       2802 integration points.
+  Task    38 has       2859 integration points.
+  Task    39 has       2787 integration points.
+  Task    40 has       2830 integration points.
+  Task    41 has       2905 integration points.
+  Task    42 has       2826 integration points.
+  Task    43 has       2749 integration points.
+  Task    44 has       2801 integration points.
+  Task    45 has       2816 integration points.
+  Task    46 has       2901 integration points.
+  Task    47 has       2916 integration points.
+  Task    48 has       2812 integration points.
+  Task    49 has       2902 integration points.
+  Task    50 has       2747 integration points.
+  Task    51 has       2782 integration points.
+  Task    52 has       2795 integration points.
+  Task    53 has       2793 integration points.
+  Task    54 has       2828 integration points.
+  Task    55 has       2905 integration points.
+  Task    56 has       2904 integration points.
+  Task    57 has       2804 integration points.
+  Task    58 has       2833 integration points.
+  Task    59 has       2828 integration points.
+  Task    60 has       2828 integration points.
+  Task    61 has       2861 integration points.
+  Task    62 has       2821 integration points.
+  Task    63 has       2810 integration points.
+  Task    64 has       2805 integration points.
+  Task    65 has       2831 integration points.
+  Task    66 has       2785 integration points.
+  Task    67 has       2825 integration points.
+  Task    68 has       2833 integration points.
+  Task    69 has       2833 integration points.
+  Task    70 has       2835 integration points.
+  Task    71 has       2786 integration points.
+  Available memory per node after partition_grid [GB]:    491.37
+  Initializing partition tables, free-atom densities, potentials, etc. across the integration grid (initialize_grid_storage).
+  | initialize_grid_storage: Actual outermost partition radius vs. multipole_radius_free
+  | (-- VB: in principle, multipole_radius_free should be larger, hence this output)
+  | Species        1: Confinement radius =              5.500000000000000 AA, multipole_radius_free =              5.555717568450569 AA.
+  | Species        1: outer_partition_radius set to              5.555717568450569 AA .
+  | Species        2: Confinement radius =              4.999999999999999 AA, multipole_radius_free =              5.043624274424571 AA.
+  | Species        2: outer_partition_radius set to              5.043624274424571 AA .
+  | Species        3: Confinement radius =              4.999999999999999 AA, multipole_radius_free =              5.019602836301480 AA.
+  | Species        3: outer_partition_radius set to              5.019602836301480 AA .
+  | Species        4: Confinement radius =              4.999999999999999 AA, multipole_radius_free =              5.054417573612229 AA.
+  | Species        4: outer_partition_radius set to              5.054417573612229 AA .
+  | The sparse table of interatomic distances needs         18.87 kbyte instead of        28.80 kbyte of memory.
+  | Net number of integration points:   202732
+  | of which are non-zero points    :   173664
+  | Numerical average free-atom electrostatic potential    :     -0.06280153 eV
+  Available memory per node after initialize_grid_storage_p1 [GB]:    491.34
+  Renormalizing the initial density to the exact electron count on the 3D integration grid.
+  | Initial density: Formal number of electrons (from input files) :     172.0000000000
+  | Integrated number of electrons on 3D grid     :     172.0016883295
+  | Charge integration error                      :       0.0016883295
+  | Normalization factor for density and gradient :       0.9999901842
+  Renormalizing the free-atom superposition density to the exact electron count on the 3D integration grid.
+  | Formal number of electrons (from input files) :     172.0000000000
+  | Integrated number of electrons on 3D grid     :     172.0016883295
+  | Charge integration error                      :       0.0016883295
+  | Normalization factor for density and gradient :       0.9999901842
+  Obtaining max. number of non-zero basis functions in each batch (get_n_compute_maxes).
+  | Maximal number of non-zero basis functions:      315 in task     0
+  | Maximal number of non-zero basis functions:      310 in task     1
+  | Maximal number of non-zero basis functions:      283 in task     2
+  | Maximal number of non-zero basis functions:      274 in task     3
+  | Maximal number of non-zero basis functions:      306 in task     4
+  | Maximal number of non-zero basis functions:      274 in task     5
+  | Maximal number of non-zero basis functions:      297 in task     6
+  | Maximal number of non-zero basis functions:      302 in task     7
+  | Maximal number of non-zero basis functions:      296 in task     8
+  | Maximal number of non-zero basis functions:      282 in task     9
+  | Maximal number of non-zero basis functions:      306 in task    10
+  | Maximal number of non-zero basis functions:      288 in task    11
+  | Maximal number of non-zero basis functions:      306 in task    12
+  | Maximal number of non-zero basis functions:      294 in task    13
+  | Maximal number of non-zero basis functions:      310 in task    14
+  | Maximal number of non-zero basis functions:      286 in task    15
+  | Maximal number of non-zero basis functions:      305 in task    16
+  | Maximal number of non-zero basis functions:      284 in task    17
+  | Maximal number of non-zero basis functions:      293 in task    18
+  | Maximal number of non-zero basis functions:      284 in task    19
+  | Maximal number of non-zero basis functions:      314 in task    20
+  | Maximal number of non-zero basis functions:      292 in task    21
+  | Maximal number of non-zero basis functions:      293 in task    22
+  | Maximal number of non-zero basis functions:      290 in task    23
+  | Maximal number of non-zero basis functions:      315 in task    24
+  | Maximal number of non-zero basis functions:      296 in task    25
+  | Maximal number of non-zero basis functions:      306 in task    26
+  | Maximal number of non-zero basis functions:      295 in task    27
+  | Maximal number of non-zero basis functions:      306 in task    28
+  | Maximal number of non-zero basis functions:      312 in task    29
+  | Maximal number of non-zero basis functions:      295 in task    30
+  | Maximal number of non-zero basis functions:      314 in task    31
+  | Maximal number of non-zero basis functions:      288 in task    32
+  | Maximal number of non-zero basis functions:      285 in task    33
+  | Maximal number of non-zero basis functions:      314 in task    34
+  | Maximal number of non-zero basis functions:      313 in task    35
+  | Maximal number of non-zero basis functions:      317 in task    36
+  | Maximal number of non-zero basis functions:      304 in task    37
+  | Maximal number of non-zero basis functions:      315 in task    38
+  | Maximal number of non-zero basis functions:      313 in task    39
+  | Maximal number of non-zero basis functions:      285 in task    40
+  | Maximal number of non-zero basis functions:      320 in task    41
+  | Maximal number of non-zero basis functions:      296 in task    42
+  | Maximal number of non-zero basis functions:      295 in task    43
+  | Maximal number of non-zero basis functions:      316 in task    44
+  | Maximal number of non-zero basis functions:      306 in task    45
+  | Maximal number of non-zero basis functions:      312 in task    46
+  | Maximal number of non-zero basis functions:      314 in task    47
+  | Maximal number of non-zero basis functions:      302 in task    48
+  | Maximal number of non-zero basis functions:      299 in task    49
+  | Maximal number of non-zero basis functions:      297 in task    50
+  | Maximal number of non-zero basis functions:      272 in task    51
+  | Maximal number of non-zero basis functions:      286 in task    52
+  | Maximal number of non-zero basis functions:      311 in task    53
+  | Maximal number of non-zero basis functions:      283 in task    54
+  | Maximal number of non-zero basis functions:      296 in task    55
+  | Maximal number of non-zero basis functions:      316 in task    56
+  | Maximal number of non-zero basis functions:      295 in task    57
+  | Maximal number of non-zero basis functions:      305 in task    58
+  | Maximal number of non-zero basis functions:      287 in task    59
+  | Maximal number of non-zero basis functions:      302 in task    60
+  | Maximal number of non-zero basis functions:      286 in task    61
+  | Maximal number of non-zero basis functions:      299 in task    62
+  | Maximal number of non-zero basis functions:      310 in task    63
+  | Maximal number of non-zero basis functions:      318 in task    64
+  | Maximal number of non-zero basis functions:      307 in task    65
+  | Maximal number of non-zero basis functions:      289 in task    66
+  | Maximal number of non-zero basis functions:      312 in task    67
+  | Maximal number of non-zero basis functions:      320 in task    68
+  | Maximal number of non-zero basis functions:      290 in task    69
+  | Maximal number of non-zero basis functions:      314 in task    70
+  | Maximal number of non-zero basis functions:      306 in task    71
+  Available memory per node after get_n_compute_maxes_p1 [GB]:    491.34
+  Available memory per node after allocate_matrices [GB]:    491.34
+  Available memory per node after init_comm_sparse_local_matrix_scalapack [GB]:    491.34
+  Integrating Hamiltonian matrix: batch-based integration.
+  Time summed over all CPUs for integration: real work        2.743 s, elapsed        3.117 s
+  Available memory per node after integrate hamiltonian matrix [GB]:    491.06
+  Integrating overlap matrix.
+  Time summed over all CPUs for integration: real work        1.093 s, elapsed        1.272 s
+  Available memory per node after integrate ovlp matrix [GB]:    490.97
+  Available memory per node after ASI_callbacks invoke [GB]:    490.97
+  Deallocating overlap matrix.
+  Available memory per node after save_overlap_scalapack [GB]:    490.97
+
+  Updating Kohn-Sham eigenvalues and eigenvectors using ELSI and the ELPA eigensolver.
+
+  Obtaining occupation numbers and electronic chemical potential using ELSI.
+  | Note that, for insulating systems, the printed 'chemical potential' value is not uniquely defined.
+  | It can be anywhere in the energy gap, as long as it correctly separates occupied and unoccupied states.
+  | In systems with a gap, the physically relevant chemical potential is the VBM or HOMO.
+
+  | Chemical potential (Fermi level):    -8.29425840 eV
+  Available memory per node after advance_KS_solution [GB]:    490.92
+  Writing Kohn-Sham eigenvalues.
+
+  State    Occupation    Eigenvalue [Ha]    Eigenvalue [eV]
+      1       2.00000         -46.365515        -1261.66986
+      2       2.00000         -14.250237         -387.76868
+      3       2.00000         -14.250233         -387.76858
+      4       2.00000         -14.249952         -387.76094
+      5       2.00000         -14.249936         -387.76048
+      6       2.00000         -10.160447         -276.47982
+      7       2.00000         -10.160133         -276.47128
+      8       2.00000         -10.159945         -276.46617
+      9       2.00000         -10.159647         -276.45806
+     10       2.00000         -10.159630         -276.45759
+     11       2.00000         -10.159604         -276.45690
+     12       2.00000         -10.159105         -276.44331
+     13       2.00000         -10.159058         -276.44204
+     14       2.00000         -10.158486         -276.42647
+     15       2.00000         -10.158309         -276.42164
+     16       2.00000         -10.158293         -276.42121
+     17       2.00000         -10.157719         -276.40560
+     18       2.00000         -10.150366         -276.20551
+     19       2.00000         -10.150357         -276.20528
+     20       2.00000         -10.150287         -276.20337
+     21       2.00000         -10.150279         -276.20314
+     22       2.00000         -10.150075         -276.19760
+     23       2.00000         -10.150051         -276.19695
+     24       2.00000         -10.149786         -276.18974
+     25       2.00000         -10.149760         -276.18903
+     26       2.00000          -2.937603          -79.93624
+     27       2.00000          -1.718351          -46.75871
+     28       2.00000          -1.718350          -46.75868
+     29       2.00000          -1.714246          -46.64701
+     30       2.00000          -1.066312          -29.01583
+     31       2.00000          -1.060065          -28.84583
+     32       2.00000          -1.060044          -28.84525
+     33       2.00000          -1.053456          -28.66601
+     34       2.00000          -0.918856          -25.00334
+     35       2.00000          -0.899158          -24.46732
+     36       2.00000          -0.899094          -24.46558
+     37       2.00000          -0.893940          -24.32534
+     38       2.00000          -0.886857          -24.13260
+     39       2.00000          -0.886666          -24.12740
+     40       2.00000          -0.886319          -24.11797
+     41       2.00000          -0.853922          -23.23641
+     42       2.00000          -0.830799          -22.60720
+     43       2.00000          -0.777337          -21.15243
+     44       2.00000          -0.777313          -21.15175
+     45       2.00000          -0.715708          -19.47541
+     46       2.00000          -0.711940          -19.37289
+     47       2.00000          -0.691419          -18.81446
+     48       2.00000          -0.691386          -18.81357
+     49       2.00000          -0.690569          -18.79133
+     50       2.00000          -0.670378          -18.24191
+     51       2.00000          -0.661303          -17.99497
+     52       2.00000          -0.650055          -17.68889
+     53       2.00000          -0.650005          -17.68755
+     54       2.00000          -0.634572          -17.26757
+     55       2.00000          -0.627642          -17.07900
+     56       2.00000          -0.627628          -17.07862
+     57       2.00000          -0.582068          -15.83889
+     58       2.00000          -0.570298          -15.51861
+     59       2.00000          -0.557909          -15.18148
+     60       2.00000          -0.557860          -15.18015
+     61       2.00000          -0.556960          -15.15564
+     62       2.00000          -0.537430          -14.62422
+     63       2.00000          -0.535261          -14.56520
+     64       2.00000          -0.532762          -14.49718
+     65       2.00000          -0.526743          -14.33340
+     66       2.00000          -0.526633          -14.33041
+     67       2.00000          -0.521717          -14.19665
+     68       2.00000          -0.521674          -14.19547
+     69       2.00000          -0.513784          -13.98079
+     70       2.00000          -0.513715          -13.97890
+     71       2.00000          -0.508920          -13.84842
+     72       2.00000          -0.505694          -13.76064
+     73       2.00000          -0.503257          -13.69431
+     74       2.00000          -0.495599          -13.48593
+     75       2.00000          -0.459807          -12.51199
+     76       2.00000          -0.459799          -12.51176
+     77       2.00000          -0.439142          -11.94965
+     78       2.00000          -0.437492          -11.90477
+     79       2.00000          -0.405522          -11.03483
+     80       2.00000          -0.405473          -11.03348
+     81       2.00000          -0.393120          -10.69735
+     82       2.00000          -0.385257          -10.48339
+     83       2.00000          -0.385159          -10.48072
+     84       2.00000          -0.384143          -10.45307
+     85       2.00000          -0.337836           -9.19299
+     86       2.00000          -0.336000           -9.14302
+     87       0.00000          -0.264800           -7.20558
+     88       0.00000          -0.264752           -7.20426
+     89       0.00000          -0.218718           -5.95162
+     90       0.00000          -0.155570           -4.23328
+     91       0.00000          -0.138736           -3.77520
+     92       0.00000          -0.138662           -3.77319
+     93       0.00000          -0.124120           -3.37747
+     94       0.00000          -0.082658           -2.24925
+     95       0.00000          -0.079373           -2.15986
+     96       0.00000          -0.072254           -1.96614
+     97       0.00000          -0.071170           -1.93663
+     98       0.00000          -0.071044           -1.93319
+     99       0.00000          -0.044178           -1.20215
+    100       0.00000          -0.044034           -1.19821
+    101       0.00000          -0.042275           -1.15037
+    102       0.00000          -0.001293           -0.03519
+    103       0.00000          -0.001126           -0.03063
+    104       0.00000           0.004370            0.11892
+    105       0.00000           0.004651            0.12657
+    106       0.00000           0.004729            0.12869
+    107       0.00000           0.014812            0.40305
+    108       0.00000           0.014924            0.40611
+    109       0.00000           0.017192            0.46782
+    110       0.00000           0.023662            0.64389
+    111       0.00000           0.023687            0.64456
+    112       0.00000           0.026269            0.71481
+    113       0.00000           0.026411            0.71868
+    114       0.00000           0.032725            0.89048
+    115       0.00000           0.035957            0.97844
+    116       0.00000           0.043181            1.17502
+    117       0.00000           0.051334            1.39686
+    118       0.00000           0.067743            1.84339
+    119       0.00000           0.067849            1.84626
+    120       0.00000           0.076258            2.07509
+    121       0.00000           0.100425            2.73270
+    122       0.00000           0.100489            2.73445
+    123       0.00000           0.119887            3.26228
+    124       0.00000           0.119941            3.26377
+    125       0.00000           0.120297            3.27344
+    126       0.00000           0.120589            3.28139
+    127       0.00000           0.139291            3.79030
+    128       0.00000           0.139337            3.79156
+    129       0.00000           0.139660            3.80033
+    130       0.00000           0.147903            4.02466
+    131       0.00000           0.147939            4.02562
+    132       0.00000           0.154192            4.19577
+    133       0.00000           0.186823            5.08370
+    134       0.00000           0.190898            5.19461
+    135       0.00000           0.195743            5.32644
+    136       0.00000           0.205671            5.59660
+    137       0.00000           0.214861            5.84665
+    138       0.00000           0.214895            5.84759
+    139       0.00000           0.215305            5.85875
+    140       0.00000           0.218079            5.93424
+    141       0.00000           0.218133            5.93569
+    142       0.00000           0.230499            6.27219
+    143       0.00000           0.232269            6.32037
+    144       0.00000           0.232292            6.32099
+    145       0.00000           0.233622            6.35718
+    146       0.00000           0.234443            6.37953
+    147       0.00000           0.245797            6.68847
+    148       0.00000           0.251410            6.84121
+    149       0.00000           0.257891            7.01757
+    150       0.00000           0.257956            7.01935
+    151       0.00000           0.268466            7.30534
+    152       0.00000           0.274474            7.46881
+    153       0.00000           0.279364            7.60187
+    154       0.00000           0.280358            7.62893
+    155       0.00000           0.280420            7.63061
+    156       0.00000           0.285905            7.77987
+    157       0.00000           0.285953            7.78117
+    158       0.00000           0.304257            8.27925
+    159       0.00000           0.305396            8.31026
+    160       0.00000           0.305461            8.31203
+    161       0.00000           0.329019            8.95306
+    162       0.00000           0.342535            9.32084
+    163       0.00000           0.349714            9.51619
+    164       0.00000           0.349756            9.51735
+    165       0.00000           0.359198            9.77428
+    166       0.00000           0.359222            9.77494
+    167       0.00000           0.359309            9.77728
+    168       0.00000           0.366884            9.98341
+    169       0.00000           0.370494           10.08165
+    170       0.00000           0.371939           10.12097
+    171       0.00000           0.378597           10.30215
+    172       0.00000           0.410972           11.18312
+    173       0.00000           0.410996           11.18376
+    174       0.00000           0.421550           11.47096
+    175       0.00000           0.423061           11.51208
+    176       0.00000           0.460845           12.54022
+    177       0.00000           0.460935           12.54267
+    178       0.00000           0.468264           12.74211
+    179       0.00000           0.472780           12.86501
+
+  Highest occupied state (VBM) at     -9.14301970 eV (relative to internal zero)
+  | Occupation number:      2.00000000
+  | K-point:       1 at    0.000000    0.000000    0.000000 (in units of recip. lattice)
+
+  Lowest unoccupied state (CBM) at    -7.20558176 eV (relative to internal zero)
+  | Occupation number:      0.00000000
+  | K-point:       1 at    0.000000    0.000000    0.000000 (in units of recip. lattice)
+
+  ESTIMATED overall HOMO-LUMO gap:      1.93743794 eV between HOMO at k-point 1 and LUMO at k-point 1
+  The gap value is above 0.2 eV. Unless you are using a very sparse k-point grid,
+  this system is most likely an insulator or a semiconductor.
+  Calculating total energy contributions from superposition of free atom densities.
+
+  Total energy components:
+  | Sum of eigenvalues            :        -701.47108102 Ha      -19087.99930125 eV
+  | XC energy correction          :        -153.84832474 Ha       -4186.42591912 eV
+  | XC potential correction       :         197.72174539 Ha        5380.28243778 eV
+  | Free-atom electrostatic energy:        -531.85530658 Ha      -14472.51924575 eV
+  | Hartree energy correction     :           0.00000000 Ha           0.00000000 eV
+  | Ionic    embedding energy     :          -0.15920951 Ha          -4.33231123 eV
+  | Density  embedding energy     :           0.15973953 Ha           4.34673367 eV
+  | Nonlocal embedding energy     :           0.00000000 Ha           0.00000000 eV
+  | External embedding energy     :           0.00053001 Ha           0.01442244 eV
+  | vdW energy correction         :           0.00000000 Ha           0.00000000 eV
+  | Entropy correction            :           0.00000000 Ha           0.00000000 eV
+  | ---------------------------
+  | Total energy                  :       -1189.61270648 Ha      -32371.00876200 eV
+  | Total energy, T -> 0          :       -1189.61270648 Ha      -32371.00876200 eV  <-- do not rely on this value for anything but (periodic) metals
+  | Electronic free energy        :       -1189.61270648 Ha      -32371.00876200 eV
+
+  Total energy including external embedding contributions:
+  | Total energy + embedding      :       -1189.61217646 Ha      -32370.99433957 eV
+  | Total energy + embedding, T->0:       -1189.61217646 Ha      -32370.99433957 eV  <-- do not rely on this value for anything but (periodic) metals
+  | Elec. free energy + embedding :       -1189.61217646 Ha      -32370.99433957 eV
+
+  Derived energy quantities:
+  | Kinetic energy                :        1182.29179969 Ha       32171.79675257 eV
+  | Electrostatic energy          :       -2217.89644190 Ha      -60352.03286179 eV
+  | Energy correction for multipole
+  | error in Hartree potential    :           0.00000000 Ha           0.00000000 eV
+  | Sum of eigenvalues per atom                           :        -515.89187301 eV
+  | Total energy (T->0) per atom                          :        -874.89212870 eV  <-- do not rely on this value for anything but (periodic) metals
+  | Electronic free energy per atom                       :        -874.89212870 eV
+  Initialize hartree_potential_storage
+  Max. number of atoms included in rho_multipole:           37
+
+  End scf initialization - timings             :  max(cpu_time)    wall_clock(cpu1)
+  | Time for scf. initialization                :        0.293 s           0.322 s
+  | Boundary condition initialization           :        0.019 s           0.019 s
+  | Integration                                 :        0.064 s           0.067 s
+  | Solution of K.-S. eqns.                     :        0.038 s           0.048 s
+  | Grid partitioning                           :        0.144 s           0.149 s
+  | Preloading free-atom quantities on grid     :        0.036 s           0.037 s
+  | Free-atom superposition energy              :        0.005 s           0.006 s
+  | Total energy evaluation                     :        0.000 s           0.001 s
+
+  Partial memory accounting:
+  | Current value for overall tracked memory usage:
+  |   Minimum:        0.964 MB (on task 66)
+  |   Maximum:        0.999 MB (on task  0)
+  |   Average:        0.983 MB
+  | Peak value for overall tracked memory usage:
+  |   Minimum:        3.402 MB (on task 51 after allocating wave)
+  |   Maximum:        3.852 MB (on task 41 after allocating wave)
+  |   Average:        3.658 MB
+  | Largest tracked array allocation so far:
+  |   Minimum:        0.605 MB (overlap_matrix on task  3)
+  |   Maximum:        0.901 MB (all_coords on task 30)
+  |   Average:        0.694 MB
+  Note:  These values currently only include a subset of arrays which are explicitly tracked.
+  The "true" memory usage will be greater.
+------------------------------------------------------------
+  Available memory after initialize_scf [GB]:    490.92
+  Time for density update prior                :  max(cpu_time)    wall_clock(cpu1)
+  | self-consistency iterative process          :        0.067 s           0.073 s
+------------------------------------------------------------
+Convergence:    q app. |  density  | eigen (eV) | Etot (eV) | forces (eV/A) |       CPU time |     Clock time
+  SCF    1 : -0.10E-12 |  0.91E+00 |   0.83E+02 |  0.38E+01 |             . |        0.210 s |        0.220 s
+  SCF    2 : -0.26E-13 |  0.84E+00 |   0.75E+03 |  0.16E+02 |             . |        0.209 s |        0.210 s
+  SCF    3 :  0.24E-13 |  0.36E+00 |  -0.10E+03 |  0.69E+00 |             . |        0.215 s |        0.215 s
+  SCF    4 : -0.12E-12 |  0.20E+00 |   0.11E+03 |  0.41E+00 |             . |        0.204 s |        0.205 s
+  SCF    5 : -0.11E-12 |  0.60E-01 |   0.33E+01 |  0.43E-01 |             . |        0.205 s |        0.209 s
+  SCF    6 : -0.32E-13 |  0.26E-01 |   0.14E+02 |  0.28E-01 |             . |        0.216 s |        0.217 s
+  SCF    7 : -0.59E-13 |  0.80E-02 |   0.12E+01 |  0.57E-02 |             . |        0.217 s |        0.217 s
+  SCF    8 : -0.14E-13 |  0.37E-02 |  -0.42E-01 | -0.12E-03 |             . |        0.202 s |        0.202 s
+  SCF    9 :  0.88E-14 |  0.24E-02 |   0.19E+01 |  0.58E-03 |             . |        0.205 s |        0.206 s
+  SCF   10 : -0.34E-13 |  0.66E-03 |   0.90E+00 |  0.27E-05 |             . |        0.204 s |        0.204 s
+  SCF   11 :  0.57E-14 |  0.18E-03 |   0.11E+00 | -0.54E-04 |             . |        0.215 s |        0.214 s
+  SCF   12 : -0.11E-13 |  0.68E-04 |  -0.68E-02 | -0.98E-05 |             . |        0.206 s |        0.206 s
+  SCF   13 :  0.13E-13 |  0.20E-04 |  -0.14E-02 | -0.31E-05 |             . |        0.214 s |        0.213 s
+  SCF   14 :  0.22E-14 |  0.13E-04 |  -0.21E-02 | -0.19E-05 |             . |        0.215 s |        0.215 s
+  SCF   15 : -0.66E-13 |  0.37E-05 |  -0.51E-03 |  0.82E-06 |             . |        0.212 s |        0.213 s
+  SCF   16 : -0.62E-14 |  0.14E-05 |  -0.13E-03 |  0.22E-06 |             . |        0.213 s |        0.213 s
+  SCF   17 : -0.63E-13 |  0.82E-06 |  -0.80E-04 | -0.17E-06 |             . |        0.215 s |        0.215 s
+  SCF   18 : -0.22E-13 |  0.28E-06 |  -0.18E-04 | -0.53E-07 |             . |        0.202 s |        0.202 s
+  SCF   19 :  0.22E-13 |  0.13E-06 |   0.35E-05 | -0.33E-07 |             . |        0.214 s |        0.215 s
+  SCF   20 : -0.31E-13 |  0.49E-07 |  -0.14E-04 | -0.89E-08 |             . |        0.211 s |        0.213 s
+  SCF   21 :  0.20E-13 |  0.26E-07 |  -0.16E-04 |  0.13E-08 |      0.84E-01 |        0.686 s |        0.687 s
+
+  Total energy components:
+  | Sum of eigenvalues            :        -669.66801684 Ha      -18222.59389348 eV
+  | XC energy correction          :        -156.10867941 Ha       -4247.93329910 eV
+  | XC potential correction       :         200.64883668 Ha        5459.93264430 eV
+  | Free-atom electrostatic energy:        -531.85530658 Ha      -14472.51924575 eV
+  | Hartree energy correction     :         -31.68664205 Ha        -862.23740032 eV
+  | Ionic    embedding energy     :          -0.15920951 Ha          -4.33231123 eV
+  | Density  embedding energy     :           0.15978105 Ha           4.34786349 eV
+  | Nonlocal embedding energy     :           0.00000000 Ha           0.00000000 eV
+  | External embedding energy     :           0.00057154 Ha           0.01555227 eV
+  | vdW energy correction         :           0.00000000 Ha           0.00000000 eV
+  | Entropy correction            :           0.00000000 Ha           0.00000000 eV
+  | ---------------------------
+  | Total energy                  :       -1188.82958924 Ha      -32349.69905785 eV
+  | Total energy, T -> 0          :       -1188.82958924 Ha      -32349.69905785 eV  <-- do not rely on this value for anything but (periodic) metals
+  | Electronic free energy        :       -1188.82958924 Ha      -32349.69905785 eV
+
+  Total energy including external embedding contributions:
+  | Total energy + embedding      :       -1188.82901771 Ha      -32349.68350558 eV
+  | Total energy + embedding, T->0:       -1188.82901771 Ha      -32349.68350558 eV  <-- do not rely on this value for anything but (periodic) metals
+  | Elec. free energy + embedding :       -1188.82901771 Ha      -32349.68350558 eV
+
+  Derived energy quantities:
+  | Kinetic energy                :        1186.35367106 Ha       32282.32589613 eV
+  | Electrostatic energy          :       -2218.91479985 Ha      -60379.74379138 eV
+  | Energy correction for multipole
+  | error in Hartree potential    :           0.27813974 Ha           7.56856731 eV
+  | Sum of eigenvalues per atom                           :        -492.50253766 eV
+  | Total energy (T->0) per atom                          :        -874.31619075 eV  <-- do not rely on this value for anything but (periodic) metals
+  | Electronic free energy per atom                       :        -874.31619075 eV
+  Highest occupied state (VBM) at     -5.06854861 eV (relative to internal zero)
+  | Occupation number:      2.00000000
+  | K-point:       1 at    0.000000    0.000000    0.000000 (in units of recip. lattice)
+
+  Lowest unoccupied state (CBM) at    -3.08060698 eV (relative to internal zero)
+  | Occupation number:      0.00000000
+  | K-point:       1 at    0.000000    0.000000    0.000000 (in units of recip. lattice)
+
+  ESTIMATED overall HOMO-LUMO gap:      1.98794163 eV between HOMO at k-point 1 and LUMO at k-point 1
+  The gap value is above 0.2 eV. Unless you are using a very sparse k-point grid,
+  this system is most likely an insulator or a semiconductor.
+
+  | Chemical Potential                          :    -3.82262180 eV
+  | Note that, for insulating systems, the printed 'chemical potential' value is not uniquely defined.
+  | It can be anywhere in the energy gap, as long as it correctly separates occupied and unoccupied states.
+  | In systems with a gap, the physically relevant chemical potential is the VBM or HOMO.
+
+  Self-consistency cycle converged.
+
+
+  Converging periodic supercell size for vdw calculation.
+  Convergence accuracy (and time!) can be adjusted using the vdw_convergence_threshold keyword.
+
+  Total energy components:
+  | Sum of eigenvalues            :        -669.66801684 Ha      -18222.59389348 eV
+  | XC energy correction          :        -156.10867941 Ha       -4247.93329910 eV
+  | XC potential correction       :         200.64883668 Ha        5459.93264430 eV
+  | Free-atom electrostatic energy:        -531.85530658 Ha      -14472.51924575 eV
+  | Hartree energy correction     :         -31.68664205 Ha        -862.23740032 eV
+  | Ionic    embedding energy     :          -0.15920951 Ha          -4.33231123 eV
+  | Density  embedding energy     :           0.15978105 Ha           4.34786349 eV
+  | Nonlocal embedding energy     :           0.00000000 Ha           0.00000000 eV
+  | External embedding energy     :           0.00057154 Ha           0.01555227 eV
+  | vdW energy correction         :          -0.02542467 Ha          -0.69184046 eV
+  | Entropy correction            :           0.00000000 Ha           0.00000000 eV
+  | ---------------------------
+  | Total energy                  :       -1188.85501391 Ha      -32350.39089831 eV
+  | Total energy, T -> 0          :       -1188.85501391 Ha      -32350.39089831 eV  <-- do not rely on this value for anything but (periodic) metals
+  | Electronic free energy        :       -1188.85501391 Ha      -32350.39089831 eV
+
+  Total energy including external embedding contributions:
+  | Total energy + embedding      :       -1188.85444238 Ha      -32350.37534604 eV
+  | Total energy + embedding, T->0:       -1188.85444238 Ha      -32350.37534604 eV  <-- do not rely on this value for anything but (periodic) metals
+  | Elec. free energy + embedding :       -1188.85444238 Ha      -32350.37534604 eV
+
+  Derived energy quantities:
+  | Kinetic energy                :        1186.35367106 Ha       32282.32589613 eV
+  | Electrostatic energy          :       -2218.91479985 Ha      -60379.74379138 eV
+  | Energy correction for multipole
+  | error in Hartree potential    :           0.27813974 Ha           7.56856731 eV
+  | Sum of eigenvalues per atom                           :        -492.50253766 eV
+  | Total energy (T->0) per atom                          :        -874.33488914 eV  <-- do not rely on this value for anything but (periodic) metals
+  | Electronic free energy per atom                       :        -874.33488914 eV
+  ------------------------------------------------------------
+   Computing dipole for complete unit cell:
+  | Total dipole moment in z-direction [eAng]          :          0.126087514869021E-01
+
+  Energy and forces in a compact form:
+  | Total energy uncorrected      :         -0.323503753460424E+05 eV
+  | Total energy corrected        :         -0.323503753460424E+05 eV  <-- do not rely on this value for anything but (periodic) metals
+  | Electronic free energy        :         -0.323503753460424E+05 eV
+  Total atomic forces (derivative of free energy) [eV/Ang]:
+  |    1          0.221350206676542E-01         -0.232503487433674E-01         -0.282688456004269E-02
+  |    2          0.822586316009367E-02         -0.138797099705748E-01         -0.557912657216048E-02
+  |    3          0.118000725063707E-01         -0.892625155477187E-02         -0.563881642986661E-02
+  |    4          0.227933037541614E-01         -0.158490626565022E-01         -0.169315888411396E-01
+  |    5          0.136421716734204E-01         -0.231399730571567E-01         -0.161990588519637E-01
+  |    6          0.797869764819672E-02         -0.660163003173714E-02         -0.844428664563486E-03
+  |    7          0.272205662531114E-02         -0.100026974258950E-01         -0.222817635776259E-02
+  |    8          0.196280304707850E-01         -0.112635217034449E-01         -0.847611933229809E-02
+  |    9          0.224649518507712E-01         -0.196039196610548E-01         -0.205841124536492E-01
+  |   10          0.447643426366170E-02         -0.864920767466035E-02         -0.825442896882043E-03
+  |   11          0.766623143887150E-02         -0.357468893635856E-02         -0.234169215293360E-02
+  |   12          0.950577878690002E-02         -0.194545143499826E-01         -0.770989463644975E-02
+  |   13          0.165207941437871E-01         -0.232154678793846E-01         -0.192704964060093E-01
+  |   14          0.494744745186202E-01         -0.780522308119863E-01         -0.156652115011886E-02
+  |   15         -0.477501007642000E-01         -0.805629317568607E-01         -0.169659157032565E-02
+  |   16          0.699695948015363E-01          0.503669897595785E-01         -0.142435641554235E-01
+  |   17         -0.193467995378531E-01          0.489508226988326E-01         -0.236919799529249E-01
+  |   18          0.615930989674234E-01         -0.538400940461065E-01         -0.171954316734894E-02
+  |   19          0.629039940716801E-01          0.450875795211862E-01         -0.226060579840004E-02
+  |   20         -0.523739193779449E-01         -0.692642043683651E-01         -0.125955554296758E-01
+  |   21         -0.518861765449377E-01          0.209127737909981E-01         -0.208170633439297E-01
+  |   22          0.741840935965506E-02         -0.757057375347637E-02         -0.172303586060921E-02
+  |   23          0.331287601730032E-02         -0.142789589300862E-01         -0.509575155141736E-02
+  |   24          0.194399086826916E-01         -0.223924237345470E-01         -0.248380424063670E-01
+  |   25          0.145370111586058E-01         -0.408686634467398E-02         -0.544294496746291E-02
+  |   26         -0.403598704548871E-01          0.513344218993129E-01          0.147810479162421E-02
+  |   27          0.404428773185110E-01          0.512218474440117E-01          0.147168036113362E-02
+  |   28         -0.370775275874934E-01         -0.517699353374882E-01          0.390863462225940E-04
+  |   29          0.458265739391309E-01         -0.526851745639104E-01         -0.286705194372434E-02
+  |   30         -0.498781389620442E-01          0.395192022295139E-01          0.151183509104621E-02
+  |   31         -0.493171750334690E-01         -0.405427898776839E-01          0.141369898922479E-02
+  |   32          0.518671500391438E-01          0.374998203878334E-01          0.242484689010649E-03
+  |   33          0.523793383063868E-01         -0.457020202045147E-01         -0.223108496926430E-02
+  |   34          0.101996190614015E-02         -0.164659373226525E-02          0.851021613548840E-03
+  |   35         -0.612321368342783E-04         -0.741217117128065E-03          0.129704648998503E-02
+  |   36          0.111083186466643E-02         -0.252442507856845E-02          0.902826780315788E-03
+  |   37          0.549072597058413E-02         -0.619913209895630E-02         -0.889968402967321E-02
+
+
+------------------------------------------------------------------------------
+  Final output of selected total energy values:
+
+  The following output summarizes some interesting total energy values
+  at the end of a run (AFTER all relaxation, molecular dynamics, etc.).
+
+  | Total energy of the DFT / Hartree-Fock s.c.f. calculation      :         -32350.375346042 eV
+  | Final zero-broadening corrected energy (caution - metals only) :         -32350.375346042 eV
+  | For reference only, the value of 1 Hartree used in FHI-aims is :             27.211384500 eV
+  | For reference only, the overall average (free atom contribution
+  | + realspace contribution) of the electrostatic potential after
+  | s.c.f. convergence is                                          :             -0.059079787 eV
+
+  Before relying on these values, please be sure to understand exactly which
+  total energy value is referred to by a given number. Different objects may
+  all carry the same name 'total energy'. Definitions:
+
+  Total energy of the DFT / Hartree-Fock s.c.f. calculation:
+  | Note that this energy does not include ANY quantities calculated after the
+  | s.c.f. cycle, in particular not ANY RPA, MP2, etc. many-body perturbation terms.
+
+  Final zero-broadening corrected energy:
+  | For metallic systems only, a broadening of the occupation numbers at the Fermi
+  | level can be extrapolated back to zero broadening by an electron-gas inspired
+  | formula. For all systems that are not real metals, this value can be
+  | meaningless and should be avoided.
+
+------------------------------------------------------------------------------
+  Methods described in the following list of references were used in this FHI-aims run.
+  If you publish the results, please make sure to cite these reference if they apply.
+  FHI-aims is an academic code, and for our developers (often, Ph.D. students
+  and postdocs), scientific credit in the community is essential.
+  Thank you for helping us!
+
+  For any use of FHI-aims, please cite:
+
+    Volker Blum, Ralf Gehrke, Felix Hanke, Paula Havu, Ville Havu,
+    Xinguo Ren, Karsten Reuter, and Matthias Scheffler
+    'Ab initio molecular simulations with numeric atom-centered orbitals'
+    Computer Physics Communications 180, 2175-2196 (2009)
+    http://doi.org/10.1016/j.cpc.2009.06.022
+
+
+  For pseudopotentials or QM/MM embedding infrastructure used in your run, please cite:
+
+    D. Berger, A. J. Logsdail, H. Oberhofer, M. R. Farrow, C. R. A. Catlow, P. Sherwood,
+    A. A. Sokol, V. Blum, and K. Reuter,
+    'Embedded-cluster calculations in a numeric atomic orbital'
+    'density-functional theory framework'
+    The Journal of Chemical Physics 141, (2014).
+    http://doi.org/10.1063/1.4885816
+
+
+  The provided symmetry information was generated with SPGlib:
+
+    Atsushi Togo, Yusuke Seto, Dimitar Pashov
+    SPGlib 1.7.3 obtained from http://spglib.sourceforge.net
+    Licence: New BSD license
+    Copyright (C) 2008 Atsushi Togo
+
+
+  The ELSI infrastructure was used in your run to solve the Kohn-Sham electronic structure.
+  Please check out https://wordpress.elsi-interchange.org to learn more.
+  If scalability is important for your project, please acknowledge ELSI by citing:
+
+    V. W-z. Yu, F. Corsetti, A. Garcia, W. P. Huhn, M. Jacquelin, W. Jia,
+    B. Lange, L. Lin, J. Lu, W. Mi, A. Seifitokaldani, A. Vazquez-Mayagoitia,
+    C. Yang, H. Yang, and V. Blum
+    'ELSI: A unified software interface for Kohn-Sham electronic structure solvers'
+    Computer Physics Communications 222, 267-285 (2018).
+    http://doi.org/10.1016/j.cpc.2017.09.007
+
+
+  For the real-space grid partitioning and parallelization used in this calculation, please cite:
+
+    Ville Havu, Volker Blum, Paula Havu, and Matthias Scheffler,
+    'Efficient O(N) integration for all-electron electronic structure calculation'
+    'using numerically tabulated basis functions'
+    Journal of Computational Physics 228, 8367-8379 (2009).
+    http://doi.org/10.1016/j.jcp.2009.08.008
+
+  Of course, there are many other important community references, e.g., those cited in the
+  above references. Our list is limited to references that describe implementations in the
+  FHI-aims code. The reason is purely practical (length of this list) - please credit others as well.
+
+------------------------------------------------------------
+          Leaving FHI-aims.
+          Date     :  20241122, Time     :  190220.938
+
+          Computational steps:
+          | Number of self-consistency cycles          :           21
+          | Number of SCF (re)initializations          :            1
+
+          Detailed time accounting                     :  max(cpu_time)    wall_clock(cpu1)
+          | Total time                                  :        6.597 s           6.995 s
+          | Preparation time                            :        0.252 s           0.266 s
+          | Boundary condition initalization            :        0.019 s           0.019 s
+          | Grid partitioning                           :        0.144 s           0.149 s
+          | Preloading free-atom quantities on grid     :        0.036 s           0.037 s
+          | Free-atom superposition energy              :        0.005 s           0.006 s
+          | Total time for integrations                 :        0.890 s           0.896 s
+          | Total time for solution of K.-S. equations  :        0.285 s           0.297 s
+          | Total time for density & force components   :        1.549 s           1.561 s
+          | Total time for mixing                       :        0.025 s           0.029 s
+          | Total time for Hartree multipole update     :        0.039 s           0.038 s
+          | Total time for Hartree multipole sum        :        2.150 s           2.156 s
+          | Total time for total energy evaluation      :        0.002 s           0.002 s
+          | Total time NSC force correction             :        0.113 s           0.113 s
+          | Total time for scaled ZORA corrections      :        0.000 s           0.000 s
+          | Total time for vdW correction               :        0.021 s           0.022 s
+          | Total time for QM/MM embedding              :        0.000 s           0.000 s
+
+
+          Have a nice day.
+------------------------------------------------------------

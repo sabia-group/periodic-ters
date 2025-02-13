@@ -57,7 +57,8 @@ class FiniteFieldTERS:
             aims_dir: Path,
             fn_batch: Path,
             fn_control_template: Path,
-            fn_tip: Path,
+            fn_tip_derivative: Path,
+            fn_tip_groundstate: Path,
             fn_elsi_restart: Path,
             fn_geometry: str,
             cell: np.ndarray = None
@@ -82,7 +83,8 @@ class FiniteFieldTERS:
         self.fn_control_template = fn_control_template
         self.aims_dir = aims_dir
         self.fn_batch = fn_batch
-        self.fn_tip = fn_tip
+        self.fn_tip_derivative = fn_tip_derivative
+        self.fn_tip_groundstate = fn_tip_groundstate
         self.fn_elsi_restart = fn_elsi_restart
         #self.fn_tip_no_field = fn_tip_no_field
 
@@ -92,7 +94,7 @@ class FiniteFieldTERS:
         # diagonalize hessian to get mode vectors
         # TODO: possibly symmetrize hessian before diagonalizing
         eigenvalues, modes = np.linalg.eigh(hessian)
-        modes = modes.T # transpose the mode matrix so that we can pick modes using the first index
+        modes = modes.T
         frequencies = np.sqrt(eigenvalues.astype('complex'))
         self._frequencies = frequencies
 
@@ -112,6 +114,7 @@ class FiniteFieldTERS:
             self, 
             mode_indices: Iterable, 
             tip_origin: Iterable, 
+            sys_origin: Iterable, 
             tip_height: Iterable, 
             xy_displacement: tuple, 
             dump_wavenumbers: bool
@@ -127,6 +130,7 @@ class FiniteFieldTERS:
             self._run(
                 idx_mode=idx_mode,
                 tip_origin=tip_origin,
+                sys_origin=sys_origin,
                 tip_height=tip_height,
                 xy_displacement=xy_displacement,
                 working_dir=calc_dir,
@@ -137,10 +141,8 @@ class FiniteFieldTERS:
             pickle.dump(self.wavenumbers, open('wavenumbers.pickle', 'wb'))        
 
 
-    def run_2d_grid(self, idx_mode: int, tip_origin: Iterable, tip_height: Iterable, scan_range: tuple, bins: int):
+    def run_2d_grid(self, idx_mode: int, tip_origin: Iterable, sys_origin: Iterable, tip_height: Iterable, scan_range: tuple, bins: int):
         """Wrapper around the run function to launch calculations on a grid of tip-molecule displacements"""
-
-	# TODO: implement non-square grids
 
         # prepare spatial grid
         xedges = np.linspace(scan_range[0], scan_range[1], (bins + 1))
@@ -151,20 +153,6 @@ class FiniteFieldTERS:
         xx = xx.ravel()
         yy = yy.ravel()
 
-        # run zero-field calculations
-        # TODO: this is a potential placeholder, eventually, this will be incorporated into the loop with the GS Hartree cube file.
-        calc_dir = self.parent_dir / 'no_nearfield'
-        calc_dir.mkdir(parents=True, exist_ok=True)
-        self._run(
-            idx_mode=idx_mode,
-            tip_origin=tip_origin,
-            tip_height=tip_height,
-            xy_displacement=(0., 0.),
-            working_dir=calc_dir,
-            # TODO: Make this so that it does not do 2 field calculations that are not needed!
-            add_zerofield=True
-            )          
-
         # run grid with nearfield
         for i_calc, (x, y) in enumerate(zip(xx, yy)):
             # make calculation directory
@@ -174,10 +162,10 @@ class FiniteFieldTERS:
             self._run(
                 idx_mode=idx_mode,
                 tip_origin=tip_origin,
+                sys_origin=sys_origin,
                 tip_height=tip_height,
                 xy_displacement=(x, y),
-                working_dir=calc_dir,
-                add_zerofield=False
+                working_dir=calc_dir
                 )  
             
     
@@ -185,10 +173,10 @@ class FiniteFieldTERS:
             self, 
             idx_mode: int,  
             tip_origin: Iterable,
+            sys_origin: Iterable,
             tip_height: float,
             xy_displacement: Iterable,
-            working_dir: Path,
-            add_zerofield: bool
+            working_dir: Path
             ):
         """Run a single TERS calculation using FHI-aims, for a single mode and a single tip position.
         This entail perfoming 4 single point calculations for the two normal mode displacements and two E-field strengths.
@@ -210,22 +198,19 @@ class FiniteFieldTERS:
         dir_pos = working_dir / 'positive_displacement'
         dir_neg = working_dir / 'negative_displacement'
         for d in (dir_pos, dir_neg):
-            # TODO: add and test ground state Hartree potential
-            if add_zerofield:
-                fieldtypes = ['field_on', 'zero_field']
-            else:
-                fieldtypes = ['field_on']
+            fieldtypes = ['field_on', 'zero_field']
             for fieldtype in fieldtypes:
                 calc_dir = d / fieldtype
                 calc_dir.mkdir(parents=True, exist_ok=True)
-                tip = self.fn_tip
                 # create control file with TERS parameters
                 self._create_control(
                     calc_dir / 'control.in', 
                     self.parent_dir / self.fn_control_template,
                     self.aims_dir / 'species_defaults/defaults_2020/light/',
-                    tip,
+                    self.fn_tip_derivative,
+                    self.fn_tip_groundstate,
                     tip_origin, 
+                    sys_origin,
                     tip_height, 
                     xy_displacement
                     )
@@ -235,23 +220,24 @@ class FiniteFieldTERS:
                 elif d == dir_neg:
                     disp_geometry = neg_disp
                 self._create_geometry(calc_dir / 'geometry.in', disp_geometry, fieldtype)
-                # make a symlink to cube file so that it does not have to be copied, aims cannot do paths
-                os.system(f"ln -sf {str(self.parent_dir / self.fn_tip):s} {str(calc_dir / self.fn_tip):s}")
+                # make a symlink to cube files so that it does not have to be copied, aims cannot do paths
+                os.system(f"ln -sf {str(self.parent_dir / self.fn_tip_groundstate):s} {str(calc_dir / self.fn_tip_groundstate):s}")
+                os.system(f"ln -sf {str(self.parent_dir / self.fn_tip_derivative):s} {str(calc_dir / self.fn_tip_derivative):s}")
                 # make a symlink to ELSI restart file so that it does not have to be copied, aims cannot do paths
                 if self.fn_elsi_restart is not None:
                     os.system(f"ln -sf {str(self.parent_dir / self.fn_elsi_restart):s} {str(calc_dir / self.fn_elsi_restart):s}")
                 # copy batch script from parent directory and run
                 if self.submit_style == 'slurm':
-                    (calc_dir / 'run.sbatch').write_text(self.fn_batch.read_text()) # copy file, but no shutil import
+                    (calc_dir / 'run.sbatch').write_text(self.fn_batch.read_text()) # copy file without the need for shutil import
                     # this is a temporary measure to battle the cluster's job number limit - quite ugly
                     # TODO: think of somehthing better, avoiding platform specificity as much as possible
                     if os.path.isfile(calc_dir / 'aims.out'):
-                        print(f"Skipping submit in {str(calc_dir):s}")
+                        print(f"Skipping submit in {str(calc_dir):s}, FHI-aims output exists.")
                     else:
                         os.system(f"sbatch --job-name {str(calc_dir):s} --chdir {str(calc_dir):s} {str(calc_dir / 'run.sbatch'):s}")
                 elif self.submit_style == 'draft':
                     (calc_dir / 'run.sbatch').write_text(self.fn_batch.read_text()) # copy file, but no shutil import
-                #TODO: implement running aims outside of sbatch for personal PC use etc...
+                #TODO: implement running aims outside of batch for personal PC use etc...
                 else:
                     raise NotImplementedError('Running outside of SLURM is not implemented at the moment.')
 
@@ -261,8 +247,10 @@ class FiniteFieldTERS:
             fn_target: Path, 
             fn_template: Path, 
             species_dir: Path,
-            fn_cube: Path, 
+            fn_cube_derivative: Path, 
+            fn_cube_groundstate: Path,
             tip_origin: Iterable, 
+            sys_origin: Iterable, 
             tip_height: float, 
             xy_displacement: Iterable
             ):
@@ -278,9 +266,11 @@ class FiniteFieldTERS:
         # define list of new lines
         newlines = [
             f'pos_tip_origin          {tip_origin[0]:03f} {tip_origin[1]:03f} {tip_origin[2]:03f}\n',
+            f'pos_sys_origin          {sys_origin[0]:03f} {sys_origin[1]:03f} {sys_origin[2]:03f}\n',
             f'tip_molecule_distance   {tip_height:03f}\n',
             f'rel_shift_from_tip      {xy_displacement[0]:03f} {xy_displacement[1]:0f}\n',
-            f'nearfield               {str(fn_cube):s}\n'
+            f'nearfield_derivative    {str(fn_cube_derivative):s}\n'
+            f'nearfield_groundstate   {str(fn_cube_groundstate):s}\n'
         ]
 
         # get, read and paste basis functions
@@ -319,19 +309,15 @@ class FiniteFieldTERS:
             lines = []
         # positions
         symbols = self.system.get_chemical_symbols()
-        lines += [f'atom {r[0]:.16f} {r[1]:.16f} {r[2]:.16f} {s}\n' for r, s in zip(geometry, symbols)]
-        #for r, s in zip(geometry, symbols):
-        #    lines.append(f'atom {r[0]:.16f} {r[1]:.16f} {r[2]:.16f} {s}\n')
-        #    # super hackish workaround for CoTPP calculations
-        #    # TODO: think of something better for future use
-        #    if s == 'Co':
-        #        lines.append('initial_moment 1.0\n')
+        #lines += [f'atom {r[0]:.16f} {r[1]:.16f} {r[2]:.16f} {s}\n' for r, s in zip(geometry, symbols)]
+        for r, s in zip(geometry, symbols):
+            lines.append(f'atom {r[0]:.16f} {r[1]:.16f} {r[2]:.16f} {s}\n')
         # field
         if fieldtype == 'field_on':
             lines += [f'homogeneous_field 0.0 0.0 {self.efield:.16f}\n']
         elif fieldtype == 'zero_field':
             lines += [f'homogeneous_field 0.0 0.0 0.0\n']
-        # vacuum level: we put this firmly into 49% of the height of the central cell; only set up if cell is given
+        # vacuum level: we put this firmly into 49% of the height of the central cell, only set up if cell is given
         if self.system.pbc.all() == True:
             zlevel = 0.49 * self.system.cell[-1, -1] 
             lines += [f'set_vacuum_level {zlevel:.16f}']
@@ -344,11 +330,8 @@ def _read_aims_output(fn_aims: Path, periodic: bool):
     """Read the z-component of the dipole moment out of a single FHI-aims output file."""
     
     with open(fn_aims) as f:
-        # make initial dipole `NaN` so that we can plot it if a few calculations did not finish
-        mu_z = np.nan
         lines = f.readlines()
         for line in lines:
-            # now read in values from the aims output files
             if periodic:
                 if "| Total dipole moment in z-direction [eAng]" in line:
                     mu_z = float(line.split()[8])
@@ -399,13 +382,13 @@ def analyze_2d_ters(working_dir: Path, efield: float, dq: float, nbins: int, per
         fns = sorted(working_dir.glob(f'calc_*/{dt:s}/field_on/aims.out'))
         mu_z = [_read_aims_output(fn, periodic=periodic) for fn in fns]
         # zero-field reference values
-        fn_0 = working_dir / f'no_nearfield/{dt:s}/zero_field/aims.out'
-        mu_z_0 = _read_aims_output(fn_0, periodic=periodic)
+        fns_0 = sorted(working_dir.glob(f'calc_*/{dt:s}/zero_field/aims.out'))
+        mu_z_0 = [_read_aims_output(fn_0, periodic=periodic) for fn_0 in fns_0]
         # collect and wrap int numpy arrays
         dipoles.append(mu_z)
         dipoles_0.append(mu_z_0)
     dipoles = np.array(dipoles).reshape(2, nbins, nbins)
-    dipoles_0 = np.ones(shape=(2, nbins, nbins)) * np.array(dipoles_0)[:, None, None]
+    dipoles_0 = np.array(dipoles_0).reshape(2, nbins, nbins)
     # calculate polarizabilities
     alphas = (dipoles - dipoles_0) / efield
     # calculate d(alpha)/dQ

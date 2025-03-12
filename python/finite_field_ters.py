@@ -1,5 +1,5 @@
 import os
-from typing import Iterable
+from typing import Iterable, Union
 from pathlib import Path
 import pickle
 
@@ -49,7 +49,8 @@ class FiniteFieldTERS:
 
     def __init__(
             self, 
-            hessian: np.ndarray, 
+            hessian: Union[None, np.ndarray],
+            modes: Union[None, np.ndarray], 
             masses: np.ndarray, 
             dq: float,
             efield: float,
@@ -73,6 +74,11 @@ class FiniteFieldTERS:
             system.cell = cell
         self.system = system
 
+        # check that we only have a hessian or modes, but not both, one of them must be `None`
+        # this is to enable passing either a full hessian and taking care of the diag business here
+        # or passing and using mode vectors directly as an input
+        assert hessian is None or modes is None
+
         # unpack input
         self.hessian = hessian
         self.masses = masses
@@ -91,12 +97,13 @@ class FiniteFieldTERS:
         # assert that we only assign one float for the electric field, which will be in the z-direction
         assert isinstance(efield, float)
 
-        # diagonalize hessian to get mode vectors
-        # TODO: possibly symmetrize hessian before diagonalizing
-        eigenvalues, modes = np.linalg.eigh(hessian)
-        modes = modes.T
-        frequencies = np.sqrt(eigenvalues.astype('complex'))
-        self._frequencies = frequencies
+        if self.hessian is not None:
+            # diagonalize hessian to get mode vectors
+            # TODO: possibly symmetrize hessian before diagonalizing
+            eigenvalues, modes = np.linalg.eigh(hessian)
+            modes = modes.T
+            frequencies = np.sqrt(eigenvalues.astype('complex'))
+            self._frequencies = frequencies
 
         # lift mass-weighing from mode vectors, we need cartesian directions
         amu = cs.physical_constants['atomic mass constant'][0]
@@ -198,7 +205,12 @@ class FiniteFieldTERS:
         dir_pos = working_dir / 'positive_displacement'
         dir_neg = working_dir / 'negative_displacement'
         for d in (dir_pos, dir_neg):
-            fieldtypes = ['field_on', 'zero_field']
+            if self.fn_tip_groundstate is None:
+                # only perform calculations with field on
+                fieldtypes = ['field_on']
+            else:
+                # perform even zero-field calculations
+                fieldtypes = ['field_on', 'zero_field']
             for fieldtype in fieldtypes:
                 calc_dir = d / fieldtype
                 calc_dir.mkdir(parents=True, exist_ok=True)
@@ -221,7 +233,8 @@ class FiniteFieldTERS:
                     disp_geometry = neg_disp
                 self._create_geometry(calc_dir / 'geometry.in', disp_geometry, fieldtype)
                 # make a symlink to cube files so that it does not have to be copied, aims cannot do paths
-                os.system(f"ln -sf {str(self.parent_dir / self.fn_tip_groundstate):s} {str(calc_dir / self.fn_tip_groundstate):s}")
+                if self.fn_tip_groundstate is not None:
+                    os.system(f"ln -sf {str(self.parent_dir / self.fn_tip_groundstate):s} {str(calc_dir / self.fn_tip_groundstate):s}")
                 os.system(f"ln -sf {str(self.parent_dir / self.fn_tip_derivative):s} {str(calc_dir / self.fn_tip_derivative):s}")
                 # make a symlink to ELSI restart file so that it does not have to be copied, aims cannot do paths
                 if self.fn_elsi_restart is not None:
@@ -248,7 +261,7 @@ class FiniteFieldTERS:
             fn_template: Path, 
             species_dir: Path,
             fn_cube_derivative: Path, 
-            fn_cube_groundstate: Path,
+            fn_cube_groundstate: Union[Path, None],
             tip_origin: Iterable, 
             sys_origin: Iterable, 
             tip_height: float, 
@@ -270,8 +283,11 @@ class FiniteFieldTERS:
             f'tip_molecule_distance   {tip_height:03f}\n',
             f'rel_shift_from_tip      {xy_displacement[0]:03f} {xy_displacement[1]:0f}\n',
             f'nearfield_derivative    {str(fn_cube_derivative):s}\n'
-            f'nearfield_groundstate   {str(fn_cube_groundstate):s}\n'
-        ]
+        ] 
+        
+        # append groundstate tip filename if specified
+        if fn_cube_groundstate is not None:
+            newlines += f'nearfield_groundstate   {str(fn_cube_groundstate):s}\n'
 
         # get, read and paste basis functions
         uniquesymbols = []

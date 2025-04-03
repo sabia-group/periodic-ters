@@ -386,9 +386,19 @@ def analyze_1d_ters(working_dir: Path, fn_wavenumbers: Path, efield: float, dq: 
     }
 
 
-def analyze_2d_ters(working_dir: Path, efield: float, dq: float, nbins: int, periodic: bool):
+def analyze_2d_ters(working_dir: Path, efield: float, dq: float, nbins: int, periodic: bool, no_groundstate: bool, mu0_pos_displ: float, mu0_neg_displ: float):
     """Analysis function to gather data from a single mode, 2D TERS calculation."""
-
+    
+    # check whether we have values
+    if no_groundstate:
+        try:
+            m0_pos_displ
+        except NameError:
+            print("If no GS Hartree cube was used, the value of the groundstate dipole must be supplied manually.")
+        try:
+            m0_neg_displ
+        except NameError:
+            print("If no GS Hartree cube was used, the value of the groundstate dipole must be supplied manually.")
     displacementtypes = ['negative_displacement', 'positive_displacement']
     dipoles = []
     dipoles_0 = []
@@ -398,10 +408,13 @@ def analyze_2d_ters(working_dir: Path, efield: float, dq: float, nbins: int, per
         mu_z = [_read_aims_output(fn, periodic=periodic) for fn in fns]
         # zero-field reference values
         fns_0 = sorted(working_dir.glob(f'calc_*/{dt:s}/zero_field/aims.out'))
-        mu_z_0 = [_read_aims_output(fn_0, periodic=periodic) for fn_0 in fns_0]
-        # collect and wrap int numpy arrays
         dipoles.append(mu_z)
-        dipoles_0.append(mu_z_0)
+        if not no_groundstate:
+            mu_z_0 = [_read_aims_output(fn_0, periodic=periodic) for fn_0 in fns_0]
+            # collect and wrap int numpy arrays
+            dipoles_0.append(mu_z_0)
+    if no_groundstate:
+        dipoles_0 = [mu0_neg_displ] * len(fns) + [mu0_pos_displ] * len(fns)
     dipoles = np.array(dipoles).reshape(2, nbins, nbins)
     dipoles_0 = np.array(dipoles_0).reshape(2, nbins, nbins)
     # calculate polarizabilities

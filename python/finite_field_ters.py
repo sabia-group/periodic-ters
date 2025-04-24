@@ -344,6 +344,11 @@ class FiniteFieldTERS:
 def _read_aims_output(fn_aims: Path, periodic: bool):
     """Read the z-component of the dipole moment out of a single FHI-aims output file."""
     
+    # initialize the dipole as nan and fill in a value later
+    # this way the function always returns and does not explode if it finds nothing due to, e.g., an unconverged calculation 
+    mu_z = np.nan
+    
+    # loop over the FHI-aims output
     with open(fn_aims) as f:
         lines = f.readlines()
         for line in lines:

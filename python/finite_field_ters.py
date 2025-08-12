@@ -147,12 +147,14 @@ class FiniteFieldTERS:
             pickle.dump(self.wavenumbers, open('wavenumbers.pickle', 'wb'))        
 
 
-    def run_2d_grid(self, idx_mode: int, tip_origin: Iterable, sys_origin: Iterable, tip_height: Iterable, scan_range: tuple, bins: int):
+    def run_2d_grid(self, idx_mode: int, tip_origin: Iterable, sys_origin: Iterable, tip_height: Iterable, scan_range: tuple, bins: tuple):
         """Wrapper around the run function to launch calculations on a grid of tip-molecule displacements"""
 
+        # check whether `bins` has the right dimension
+        assert len(bins) == 2, "Two elements are expected for the `nbins` argument. If you're working with a square grid, use the same integer twice."
         # prepare spatial grid
-        xedges = np.linspace(scan_range[0], scan_range[1], (bins + 1))
-        yedges = np.linspace(scan_range[2], scan_range[3], (bins + 1))
+        xedges = np.linspace(scan_range[0], scan_range[1], (bins[0] + 1))
+        yedges = np.linspace(scan_range[2], scan_range[3], (bins[1] + 1))
         xbins = 0.5 * (xedges[1:] + xedges[:-1])
         ybins = 0.5 * (yedges[1:] + yedges[:-1])
         xx, yy = np.meshgrid(xbins, ybins)
@@ -391,9 +393,11 @@ def analyze_1d_ters(working_dir: Path, fn_wavenumbers: Path, efield: float, dq: 
     }
 
 
-def analyze_2d_ters(working_dir: Path, efield: float, dq: float, nbins: int, periodic: bool, no_groundstate: bool, mu0_pos_displ: float, mu0_neg_displ: float):
+def analyze_2d_ters(working_dir: Path, efield: float, dq: float, nbins: tuple, periodic: bool, no_groundstate: bool, mu0_pos_displ: float, mu0_neg_displ: float):
     """Analysis function to gather data from a single mode, 2D TERS calculation."""
     
+    # check whether `nbins` has the right dimension
+    assert len(nbins) == 2, "Two elements are expected for the `nbins` argument. If you're working with a square grid, use the same integer twice."
     # check whether we have values
     if no_groundstate:
         try:
@@ -420,8 +424,8 @@ def analyze_2d_ters(working_dir: Path, efield: float, dq: float, nbins: int, per
             dipoles_0.append(mu_z_0)
     if no_groundstate:
         dipoles_0 = [mu0_neg_displ] * len(fns) + [mu0_pos_displ] * len(fns)
-    dipoles = np.array(dipoles).reshape(2, nbins, nbins)
-    dipoles_0 = np.array(dipoles_0).reshape(2, nbins, nbins)
+    dipoles = np.array(dipoles).reshape(2, nbins[0], nbins[1])
+    dipoles_0 = np.array(dipoles_0).reshape(2, nbins[0], nbins[0])
     # calculate polarizabilities
     alphas = (dipoles - dipoles_0) / efield
     # calculate d(alpha)/dQ

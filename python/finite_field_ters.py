@@ -430,10 +430,11 @@ def analyze_2d_ters(working_dir: Path, efield: float, dq: float, nbins: tuple, p
     # calculate Raman TERS image
     intensity = dadq**2
 
+    # transpose the x, y axes in the output arrays so that we can directly imshow (or similar) and have x on the horizontal axis as we are used to
     return {
-        'intensity': intensity,
-        'd(alpha)/dQ': dadq,
-        'alpha': alphas,
-        'dipole': dipoles,
-        'dipole0': dipoles_0
+        'intensity': intensity.T,
+        'd(alpha)/dQ': dadq.T,
+        'alpha': np.transpose(alphas, axes=(0, 2, 1)),
+        'dipole': np.transpose(dipoles, axes=(0, 2, 1)),
+        'dipole0': np.transpose(dipoles_0, axes=(0, 2, 1))
     }

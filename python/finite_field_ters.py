@@ -393,21 +393,15 @@ def analyze_1d_ters(working_dir: Path, fn_wavenumbers: Path, efield: float, dq: 
     }
 
 
-def analyze_2d_ters(working_dir: Path, efield: float, dq: float, nbins: tuple, periodic: bool, no_groundstate: bool, mu0_pos_displ: float, mu0_neg_displ: float):
+def analyze_2d_ters(working_dir: Path, efield: float, dq: float, nbins: tuple, periodic: bool, use_groundstate: bool, no_groundstate_dir: Union[None, Path] = None):
     """Analysis function to gather data from a single mode, 2D TERS calculation."""
     
     # check whether `nbins` has the right dimension
     assert len(nbins) == 2, "Two elements are expected for the `nbins` argument. If you're working with a square grid, use the same integer twice."
-    # check whether we have values
-    if no_groundstate:
-        try:
-            m0_pos_displ
-        except NameError:
-            print("If no GS Hartree cube was used, the value of the groundstate dipole must be supplied manually.")
-        try:
-            m0_neg_displ
-        except NameError:
-            print("If no GS Hartree cube was used, the value of the groundstate dipole must be supplied manually.")
+    # check whether we have values for the zero-field case, if needed
+    if not use_groundstate:
+        if no_groundstate_dir is None:
+            raise TypeError('For a calculation without a groundstate near field potential a directory with the field-free must be provided.')
     displacementtypes = ['negative_displacement', 'positive_displacement']
     dipoles = []
     dipoles_0 = []
@@ -418,12 +412,14 @@ def analyze_2d_ters(working_dir: Path, efield: float, dq: float, nbins: tuple, p
         # zero-field reference values
         fns_0 = sorted(working_dir.glob(f'calc_*/{dt:s}/zero_field/aims.out'))
         dipoles.append(mu_z)
-        if not no_groundstate:
+        if use_groundstate:
             mu_z_0 = [_read_aims_output(fn_0, periodic=periodic) for fn_0 in fns_0]
             # collect and wrap int numpy arrays
             dipoles_0.append(mu_z_0)
-    if no_groundstate:
-        dipoles_0 = [mu0_neg_displ] * len(fns) + [mu0_pos_displ] * len(fns)
+    if not use_groundstate:
+        mu0_neg_displ = _read_aims_output(no_groundstate_dir / 'negative_displacement/aims.out', periodic=periodic)
+        mu0_pos_displ = _read_aims_output(no_groundstate_dir / 'positive_displacement/aims.out', periodic=periodic)
+        dipoles_0 = [[mu0_neg_displ] * len(fns), [mu0_pos_displ] * len(fns)]
     # we need a column-major order reshape to respect how we have built these arrays -> Fortran order in np.reshape()
     dipoles = np.array(dipoles).reshape(2, nbins[0], nbins[1], order='F')
     dipoles_0 = np.array(dipoles_0).reshape(2, nbins[0], nbins[1], order='F')

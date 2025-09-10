@@ -424,8 +424,9 @@ def analyze_2d_ters(working_dir: Path, efield: float, dq: float, nbins: tuple, p
             dipoles_0.append(mu_z_0)
     if no_groundstate:
         dipoles_0 = [mu0_neg_displ] * len(fns) + [mu0_pos_displ] * len(fns)
-    dipoles = np.array(dipoles).reshape(2, nbins[0], nbins[1])
-    dipoles_0 = np.array(dipoles_0).reshape(2, nbins[0], nbins[0])
+    # we need a column-major order reshape to respect how we have built these arrays -> Fortran order in np.reshape()
+    dipoles = np.array(dipoles).reshape(2, nbins[0], nbins[1], order='F')
+    dipoles_0 = np.array(dipoles_0).reshape(2, nbins[0], nbins[1], order='F')
     # calculate polarizabilities
     alphas = (dipoles - dipoles_0) / efield
     # calculate d(alpha)/dQ

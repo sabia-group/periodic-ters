@@ -1,11 +1,9 @@
-xc                                 pbe
-relativistic                       atomic_zora scalar
-spin                               none
-charge                             0
-k_grid				   1 1 1
-vdw_correction_hirshfeld           
-compute_forces                     .true.
-output_level                       MD_light
-output				   dipole
-sc_accuracy_rho                    1e-07
-
+xc                 	pbe
+spin                    none
+relativistic       	atomic_zora  scalar
+charge             	0.
+vdw_correction_hirshfeld .true.
+output_level       	MD_light
+output			dipole
+output_level            MD_light
+sc_accuracy_rho         1e-07

@@ -1,0 +1,37 @@
+Currently Loaded Modulefiles:
+ 1) mkl/2021.2(default)   2) intel/19.1.2   3) impi/2019.8  
+
+Key:
+(symbolic-version)  
+ started at: Wed Sep 10 18:15:58 CEST 2025
+   hostname: ravc2593
+
+finished at: Wed Sep 10 18:16:04 CEST 2025
+                                  
+================================= 
+Global information about the job: 
+================================= 
+  
+Job owner: brek(84641)
+Job name:  /raven/u/brek/projects/ters/github-example-TCNE/calc_016/positive_displacement/field_on
+Node list: ravc2593
+Job start: Wed Sep 10 18:15:55 CEST 2025
+Job end:   Wed Sep 10 18:16:05 CEST 2025
+Work dir:  /raven/u/brek/projects/ters/github-example-TCNE/calc_016/positive_displacement/field_on
+Command:   /raven/u/brek/projects/ters/github-example-TCNE/calc_016/positive_displacement/field_on/run.sbatch
+  
+  
+  
+==========================================================================================
+Information on jobsteps (Note: MaxRSS/AveRSS is the maximum/average over all 
+tasks of the per-task memory high-water marks; cf. "man sacct"): 
+==========================================================================================
+  
+JobID            JobName NNodes NTasks  NCPUS       MaxRSS       AveRSS    Elapsed ExitCode
+------------- ---------- ------ ------ ------ ------------ ------------ ---------- --------
+21720473      /raven/u/b      1           144                             00:00:10      0:0
+21720473.0    aims.25013      1     72    144        0.79M        0.33M   00:00:07      0:0
+  
+Maximum memory per node: 0.059867 GB (defined as MaxRSS*Ntasks/NNodes)
+CPU utilization: 0.0 %
+  

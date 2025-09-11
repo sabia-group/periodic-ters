@@ -485,8 +485,8 @@ def analyze_2d_ters(working_dir: Path, efield: float, dq: float, nbins: tuple, p
             # collect and wrap int numpy arrays
             dipoles_0.append(mu_z_0)
     if not use_groundstate:
-        mu0_neg_displ = _read_aims_output(no_groundstate_dir / 'negative_displacement/aims.out', periodic=periodic)
-        mu0_pos_displ = _read_aims_output(no_groundstate_dir / 'positive_displacement/aims.out', periodic=periodic)
+        mu0_neg_displ = _read_aims_output(no_groundstate_dir / 'negative_displacement/zero_field/aims.out', periodic=periodic)
+        mu0_pos_displ = _read_aims_output(no_groundstate_dir / 'positive_displacement/zero_field/aims.out', periodic=periodic)
         dipoles_0 = [[mu0_neg_displ] * len(fns), [mu0_pos_displ] * len(fns)]
     # we need a column-major order reshape to respect how we have built these arrays -> Fortran order in np.reshape()
     dipoles = np.array(dipoles).reshape(2, nbins[0], nbins[1], order='F')

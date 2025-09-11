@@ -173,10 +173,26 @@ class FiniteFieldTERS:
                 sys_origin=sys_origin,
                 tip_height=tip_height,
                 xy_displacement=(x, y),
-                working_dir=calc_dir
+                working_dir=calc_dir,
+                run_mode='nearfield'
                 )  
             
-    
+        # if groundstate nearfield is not assigned, we want to run 2 additional calculations without the near field
+        if self.fn_tip_groundstate is None:
+            calc_dir = self.parent_dir / 'no_nearfield'
+            calc_dir.mkdir(parents=True, exist_ok=True)
+            # run
+            self._run(
+                idx_mode=idx_mode,
+                tip_origin=tip_origin,
+                sys_origin=sys_origin,
+                tip_height=tip_height,
+                xy_displacement=(0.0, 0.0),
+                working_dir=calc_dir,
+                run_mode='no_nearfield'
+                )
+
+ 
     def _run(
             self, 
             idx_mode: int,  
@@ -184,7 +200,8 @@ class FiniteFieldTERS:
             sys_origin: Iterable,
             tip_height: float,
             xy_displacement: Iterable,
-            working_dir: Path
+            working_dir: Path,
+            run_mode: str
             ):
         """Run a single TERS calculation using FHI-aims, for a single mode and a single tip position.
         This entail perfoming 4 single point calculations for the two normal mode displacements and two E-field strengths.
@@ -192,7 +209,6 @@ class FiniteFieldTERS:
             idx_mode: mode index according to the provided Hessian, must be chosen by user
             dq: Cartesian displacement, units are chosen by the user (modes are unitless), so this defines the unit fully.
             working_dir: working directory from which to build the calculation infrastructure and launch the calculation.
-            add_zerofield: whether calculations with zero field strength should be performed. This is advisable with `run_1d_multimode`, but not with `run_2d_grid`, where only a single displacement is taken into account.
         """
 
         mode = self.modes[idx_mode]
@@ -206,25 +222,75 @@ class FiniteFieldTERS:
         dir_pos = working_dir / 'positive_displacement'
         dir_neg = working_dir / 'negative_displacement'
         for d in (dir_pos, dir_neg):
-            if self.fn_tip_groundstate is None:
-                # only perform calculations with field on
-                fieldtypes = ['field_on']
-            else:
-                # perform even zero-field calculations
-                fieldtypes = ['field_on', 'zero_field']
-            for fieldtype in fieldtypes:
-                calc_dir = d / fieldtype
+            # perform the near field calculations for both cases: including the ground state and the derivative or only the derivative
+            if run_mode == 'nearfield':
+                if self.fn_tip_groundstate is None:
+                    # only perform calculations with field on
+                    fieldtypes = ['field_on']
+                else:
+                    # perform even zero-field calculations
+                    fieldtypes = ['field_on', 'zero_field']
+                for fieldtype in fieldtypes:
+                    calc_dir = d / fieldtype
+                    calc_dir.mkdir(parents=True, exist_ok=True)
+                    # create control file with TERS parameters
+                    self._create_control(
+                        calc_dir / 'control.in', 
+                        self.parent_dir / self.fn_control_template,
+                        self.aims_dir / 'species_defaults/defaults_2020/light/',
+                        self.fn_tip_derivative,
+                        self.fn_tip_groundstate,
+                        tip_origin, 
+                        sys_origin,
+                        tip_height, 
+                        xy_displacement
+                        )
+                    # create displaced geometry file with the correct homogeneous field setting
+                    if d == dir_pos:
+                        disp_geometry = pos_disp
+                    elif d == dir_neg:
+                        disp_geometry = neg_disp
+                    self._create_geometry(calc_dir / 'geometry.in', disp_geometry, fieldtype)
+                    # make a symlink to cube files so that it does not have to be copied, aims cannot do paths
+                    if self.fn_tip_groundstate is not None:
+                        os.system(f"ln -sf {str(self.parent_dir / self.fn_tip_groundstate):s} {str(calc_dir / self.fn_tip_groundstate):s}")
+                    os.system(f"ln -sf {str(self.parent_dir / self.fn_tip_derivative):s} {str(calc_dir / self.fn_tip_derivative):s}")
+                    # make a symlink to ELSI restart file so that it does not have to be copied, aims cannot do paths
+                    if self.fn_elsi_restart is not None:
+                        os.system(f"ln -sf {str(self.parent_dir / self.fn_elsi_restart):s} {str(calc_dir / self.fn_elsi_restart):s}")
+                    # copy batch script from parent directory and run
+                    if self.submit_style == 'slurm':
+                        (calc_dir / 'run.sbatch').write_text(self.fn_batch.read_text()) # copy file without the need for shutil import
+                        # this is a temporary measure to battle the cluster's job number limit - quite ugly
+                        # TODO: think of somehthing better, avoiding platform specificity as much as possible
+                        if os.path.isfile(calc_dir / 'aims.out'):
+                            print(f"Skipping submit in {str(calc_dir):s}, FHI-aims output exists.")
+                        else:
+                            os.system(f"sbatch --job-name {str(calc_dir):s} --chdir {str(calc_dir):s} {str(calc_dir / 'run.sbatch'):s}")
+                    elif self.submit_style == 'draft':
+                        (calc_dir / 'run.sbatch').write_text(self.fn_batch.read_text()) # copy file, but no shutil import
+                    #TODO: implement running aims outside of batch for personal PC use etc...
+                    else:
+                        raise NotImplementedError('Running outside of SLURM is not implemented at the moment.')
+                
+            # zero-field case when we are only using the derivative - 2 single points 
+            # TODO: optional prettification would somehow merge the two blocks together, but it might require more work by changing the infrastructure 
+            # TODO: so that _run() is a single calculation with specified parameters and not 2 or 4 calculations in one function.
+            # TODO: right now this borrows the infrastructure from the above block and runs the zero-field calculation
+            elif run_mode == 'no_nearfield':
+                assert self.fn_tip_groundstate is None, "To run in the `no_nearfield` mode, the groundstate near field cannot be assigned (i.e., must be `None`.)"
+                calc_dir = d / 'zero_field'
                 calc_dir.mkdir(parents=True, exist_ok=True)
                 # create control file with TERS parameters
                 self._create_control(
-                    calc_dir / 'control.in', 
+                    calc_dir / 'control.in',
                     self.parent_dir / self.fn_control_template,
                     self.aims_dir / 'species_defaults/defaults_2020/light/',
                     self.fn_tip_derivative,
                     self.fn_tip_groundstate,
-                    tip_origin, 
+                    tip_origin,
                     sys_origin,
-                    tip_height, 
+                    tip_height,
                     xy_displacement
                     )
                 # create displaced geometry file with the correct homogeneous field setting
@@ -232,7 +298,7 @@ class FiniteFieldTERS:
                     disp_geometry = pos_disp
                 elif d == dir_neg:
                     disp_geometry = neg_disp
-                self._create_geometry(calc_dir / 'geometry.in', disp_geometry, fieldtype)
+                self._create_geometry(calc_dir / 'geometry.in', disp_geometry, fieldtype='zero_field')
                 # make a symlink to cube files so that it does not have to be copied, aims cannot do paths
                 if self.fn_tip_groundstate is not None:
                     os.system(f"ln -sf {str(self.parent_dir / self.fn_tip_groundstate):s} {str(calc_dir / self.fn_tip_groundstate):s}")
@@ -255,6 +321,8 @@ class FiniteFieldTERS:
                 else:
                     raise NotImplementedError('Running outside of SLURM is not implemented at the moment.')
 
+            else:
+                raise NameError('Unknown run mode.') 
 
     def _create_control(
             self, 

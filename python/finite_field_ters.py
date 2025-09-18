@@ -141,6 +141,7 @@ class FiniteFieldTERS:
                 tip_height=tip_height,
                 xy_displacement=xy_displacement,
                 working_dir=calc_dir,
+                run_mode='nearfield'
                 ) 
         # optionally dump the wavenumbers into a pickle file
         if dump_wavenumbers:

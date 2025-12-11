@@ -29,5 +29,5 @@ As of now, the module is capable of submitting the individual single points as S
 In addition, we have provided the cube files with two different tip geometries ("tip A" and "tipB') which are discussed and used in both above publications.
 The examples also contain Jupyter notebooks with a workflow to analyze the output of the calculations.
 
-> Note: due to a historical convention of flipped direction of E-fields in FHI-aims (well documented in the FHI-aims manual), the code expects electric fields to be given as a negative. For example, to employ a field of
-> 0.1 V/Angstrom in the *z*-direction, one has to write -0.1 in the input (as documented).
+> Note: due to a historical convention of flipped direction of E-fields in FHI-aims (well documented in the FHI-aims manual), the code expects electric fields to be given as a negative of what is wanted.
+> For example, to employ a field of 0.1 V/Angstrom in the *z*-direction, one should write -0.1 in the input (as shown in the examples).

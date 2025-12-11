@@ -10,5 +10,6 @@ K. Brezina, Y. Litman and M. Rossi: Explaining Principles of Tip-Enhanced Raman 
 
 In order to use the module, please first run 
 
-```source ./python/env.sh 
+```
+source ./python/env.sh 
 ```

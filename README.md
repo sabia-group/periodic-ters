@@ -1,6 +1,6 @@
 # Periodic TERS
 
-This repository contains code and data related to tip-enhanced Raman spectra simulations using embedding near fields in periodic boundary conditions in FHI-aims.
+This repository contains code and data related to tip-enhanced Raman spectra simulations using embedding near fields in periodic boundary conditions in [FHI-aims](https://fhi-aims.org).
 The original numerical near field framework was introduced in 
 
 Y. Litman, F. P. Bonafe, A. Akkoush, H. Appel and M. Rossi *J. Phys. Chem. Lett.* 14(30), **2023**.
@@ -28,3 +28,6 @@ python run-ters.py
 As of now, the module is capable of submitting the individual single points as SLURM jobs automatically as demonstrated the examples and docstrings.
 In addition, we have provided the cube files with two different tip geometries ("tip A" and "tipB') which are discussed and used in both above publications.
 The examples also contain Jupyter notebooks with a workflow to analyze the output of the calculations.
+
+> Note: due to a historical convention of flipped direction of E-fields in FHI-aims (well documented in the FHI-aims manual), the `finite_field_ters` module expects electric fields to be given as a negative of what is wanted.
+> For example, to employ a field of 0.1 V/Angstrom in the *z*-direction, one should write -0.1 in the input (as shown in the examples).

@@ -13,6 +13,9 @@ masses = g.get_masses()
 # read in test hessian
 hessian = pickle.load(open('hessian.pickle', 'rb'))
 
+# choose a mode
+imode = 14
+
 # set up initial TERS object, fill with required data
 ters = FiniteFieldTERS(
 hessian = hessian,
@@ -25,7 +28,7 @@ fn_control_template = Path('template.in'),
 aims_dir = Path('/u/brek/build/FHIaims/'),
 fn_batch = Path('run.sbatch'),
 fn_elsi_restart = None,
-fn_tip_derivative = Path('tipA_05_vh_ft_0049_3221meV_x1000.cube'),
+fn_tip_derivative = Path('tipA.cube'),
 fn_tip_groundstate = None,
 fn_geometry = Path('geometry.in'),
 )
@@ -33,7 +36,7 @@ fn_geometry = Path('geometry.in'),
 
 # test 2D infrastructure
 ters.run_2d_grid(
-idx_mode = 14,
+idx_mode = imode,
 tip_origin = (-0.000030, -1.696604, -4.6140),
 sys_origin = (0.0, 0.0, 0.0),
 tip_height = 4.0,

@@ -1,0 +1,37 @@
+Currently Loaded Modulefiles:
+ 1) mkl/2021.2(default)   2) intel/19.1.2   3) impi/2019.8  
+
+Key:
+(symbolic-version)  
+ started at: Thu Nov 20 23:40:02 CET 2025
+   hostname: ravc3371
+
+finished at: Thu Nov 20 23:48:09 CET 2025
+                                  
+================================= 
+Global information about the job: 
+================================= 
+  
+Job owner: brek(84641)
+Job name:  /raven/u/brek/projects/ters/Mg-porphine/mbd-nl/ters/mode_103-3.5A-dist/calc_112/positive_displacement/field_on
+Node list: ravc[3371-3376,3466-3467]
+Job start: Thu Nov 20 23:39:59 CET 2025
+Job end:   Thu Nov 20 23:48:09 CET 2025
+Work dir:  /raven/u/brek/projects/ters/Mg-porphine/mbd-nl/ters/mode_103-3.5A-dist/calc_112/positive_displacement/field_on
+Command:   /raven/u/brek/projects/ters/Mg-porphine/mbd-nl/ters/mode_103-3.5A-dist/calc_112/positive_displacement/field_on/run.sbatch
+  
+  
+  
+==========================================================================================
+Information on jobsteps (Note: MaxRSS/AveRSS is the maximum/average over all 
+tasks of the per-task memory high-water marks; cf. "man sacct"): 
+==========================================================================================
+  
+JobID            JobName NNodes NTasks  NCPUS       MaxRSS       AveRSS    Elapsed ExitCode
+------------- ---------- ------ ------ ------ ------------ ------------ ---------- --------
+22917157      /raven/u/b      8          1152                             00:08:10      0:0
+22917157.0    aims.25050      8    576   1152      258.10M      233.65M   00:08:07      0:0
+  
+Maximum memory per node: 19.485794 GB (defined as MaxRSS*Ntasks/NNodes)
+CPU utilization: 96.5 %
+  

@@ -3,10 +3,12 @@ from pathlib import Path
 
 import numpy as np
 
+import ase.io
 from finite_field_ters import FiniteFieldTERS
 
 # masses (TCNE)
-masses = np.array([12.011] * 6 + [14.007] * 4)
+g = ase.io.read('geometry.in')
+masses = g.get_masses()
 
 # read in hessian
 h = pickle.load(open('hessian.pickle', 'rb'))

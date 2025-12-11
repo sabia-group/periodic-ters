@@ -507,3 +507,37 @@ def analyze_2d_ters(working_dir: Path, efield: float, dq: float, nbins: tuple, p
         'dipole': np.transpose(dipoles, axes=(0, 2, 1)),
         'dipole0': np.transpose(dipoles_0, axes=(0, 2, 1))
     }
+
+def pad_frozen_hessian(hessian_small: np.ndarray, masses: np.ndarray, idx_fixed: np.ndarray):
+    """
+    A utility to pad small hessians with zeros from the right.
+    This is useful for when a Hessian was calculated with a part of the 
+    system frozen and has a dimension smaller than the full configuration space
+    (e.g., for a surface-bound system, when just the molecule is allowed to 
+    vibrate under the so-called frozen-surface approximation.)
+    
+    :param hessian_small: the square Hessian matrix corresponding to the moving subsystem
+    :param masses: the array of masses of the full system (one entry per atom)
+    """
+
+    # TODO: this could be done better by padding the diagonalized eigenmodes by zeros inside the class.
+    # This is to be considered a temporary fix that will eventually be deprecated.
+
+    if(len(masses) * 3) > hessian_small.shape[0]:
+        print('Hessian will be padded by zeros for fixed DOFs.')
+        ndof_fixed = 3 * len(idx_fixed)
+        full_dim = ndof_fixed + hessian_small.shape[0]
+        full_h = np.zeros(shape=(full_dim, full_dim))
+        # embed small Hessian into the big zero matrix
+        if idx_fixed[0] == 0:
+            # pad from the right
+            full_h[ndof_fixed:, ndof_fixed:] = hessian_small.copy()
+        elif idx_fixed[0] > 0:
+            # pad from the left
+            full_h[:ndof_fixed, :ndof_fixed] = hessian_small.copy()
+        fix_for_idx_mode = ndof_fixed
+    else:
+        full_h = hessian_small.copy()
+        fix_for_idx_mode = 0
+
+    return full_h, fix_for_idx_mode

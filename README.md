@@ -8,3 +8,7 @@ The finite-field periodic framework is introduced in
 
 K. Brezina, Y. Litman and M. Rossi: Explaining Principles of Tip-Enhanced Raman Images from Fully Ab Initio Modeling. arXiv:2509.13075, **2025**.
 
+In order to use the module, please first run 
+
+```source ./python/env.sh 
+```

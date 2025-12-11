@@ -16,12 +16,15 @@ source ./python/env.sh
 ```
 
 The directory `python` contains the module itself. This can prepare the directory tree and all the FHI-aims related input for running the TERS calculations either as a 1D spectrum (full frequency range for a fixed tip position) 
-or as a 2D image for a given mode (single freuency and a scanning grid of tip positions).
-The directory `examples` contains a comprehensive collection of code and data to run an analyze these simulations. Each run mode contains a `data` directory, which represents a realistic calculation directory with the output
-already provided. Feel free to prepare or run the calculations using
+or as a 2D image for a given mode (single frequency and a grid of tip positions within a selected scan range).
+The directory `examples` contains a comprehensive collection of code and data to run an analyze these simulations.
+Each run mode contains a `data` directory, which represents a realistic calculation directory with the output already provided. 
+Feel free to prepare or run the calculations using
+
 ```
 python run-ters.py
 ```
+
 As of now, the module is capable of submitting the individual single points as SLURM jobs automatically as demonstrated the examples and docstrings.
 In addition, we have provided the cube files with two different tip geometries ("tip A" and "tipB') which are discussed and used in both above publications.
 The examples also contain Jupyter notebooks with a workflow to analyze the output of the calculations.

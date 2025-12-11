@@ -1,0 +1,37 @@
+Currently Loaded Modulefiles:
+ 1) mkl/2021.2(default)   2) intel/19.1.2   3) impi/2019.8  
+
+Key:
+(symbolic-version)  
+ started at: Sun Dec 15 21:53:15 CET 2024
+   hostname: ravc3705
+
+finished at: Sun Dec 15 21:53:49 CET 2024
+                                  
+================================= 
+Global information about the job: 
+================================= 
+  
+Job owner: brek(84641)
+Job name:  /raven/u/brek/projects/ters/TCNE/ters-isolated/multimode/mode_002/positive_displacement/field_on
+Node list: ravc3705
+Job start: Sun Dec 15 21:53:13 CET 2024
+Job end:   Sun Dec 15 21:53:49 CET 2024
+Work dir:  /raven/u/brek/projects/ters/TCNE/ters-isolated/multimode/mode_002/positive_displacement/field_on
+Command:   /raven/u/brek/projects/ters/TCNE/ters-isolated/multimode/mode_002/positive_displacement/field_on/run.sbatch
+  
+  
+  
+==========================================================================================
+Information on jobsteps (Note: MaxRSS/AveRSS is the maximum/average over all 
+tasks of the per-task memory high-water marks; cf. "man sacct"): 
+==========================================================================================
+  
+JobID            JobName NNodes NTasks  NCPUS       MaxRSS       AveRSS    Elapsed ExitCode
+------------- ---------- ------ ------ ------ ------------ ------------ ---------- --------
+14230241      /raven/u/b      1           144                             00:00:36      0:0
+14230241.0    aims.24060      1     72    144      120.09M      109.80M   00:00:34      0:0
+  
+Maximum memory per node: 9.066258 GB (defined as MaxRSS*Ntasks/NNodes)
+CPU utilization: 72.2 %
+  

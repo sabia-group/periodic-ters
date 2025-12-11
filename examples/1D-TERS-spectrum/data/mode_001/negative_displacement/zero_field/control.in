@@ -14,8 +14,7 @@ pos_tip_origin          -0.000030 -1.696604 -4.614000
 pos_sys_origin          0.000000 0.000000 0.000000
 tip_molecule_distance   4.000000
 rel_shift_from_tip      0.000000 0.000000
-nearfield_derivative    tipA_05_vh_ft_0049_3221meV_x1000.cube
-nearfield_groundstate   zeros.cube
+nearfield               tipA_05_vh_ft_0049_3221meV_x1000.cube
 ################################################################################
 #
 #  FHI-aims code project

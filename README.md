@@ -23,4 +23,5 @@ already provided. Feel free to prepare or run the calculations using
 python run-ters.py
 ```
 As of now, the module is capable of submitting the individual single points as SLURM jobs automatically as demonstrated the examples and docstrings.
+In addition, we have provided the cube files with two different tip geometries ("tip A" and "tipB') which are discussed and used in both above publications.
 The examples also contain Jupyter notebooks with a workflow to analyze the output of the calculations.

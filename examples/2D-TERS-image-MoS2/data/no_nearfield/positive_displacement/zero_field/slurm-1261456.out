@@ -1,0 +1,34 @@
+Currently Loaded Modulefiles:
+ 1) intel/2024.0   2) impi/2021.11   3) mkl/2024.0  
+ started at: Fri Mar 14 10:03:31 CET 2025
+   hostname: vipc2275
+
+finished at: Fri Mar 14 10:06:48 CET 2025
+                                  
+================================= 
+Global information about the job: 
+================================= 
+  
+Job owner: brek(84641)
+Job name:  run.sbatch
+Node list: vipc[2275-2276,2286,2355,2358-2359,2589,2605]
+Job start: Fri Mar 14 10:03:29 CET 2025
+Job end:   Fri Mar 14 10:06:48 CET 2025
+Work dir:  /viper/ptmp1/brek/projects/ters/MoS2/pristine/ters/no_nearfield/positive_displacement
+Command:   /viper/ptmp1/brek/projects/ters/MoS2/pristine/ters/no_nearfield/positive_displacement/run.sbatch
+  
+  
+  
+==========================================================================================
+Information on jobsteps (Note: MaxRSS/AveRSS is the maximum/average over all 
+tasks of the per-task memory high-water marks; cf. "man sacct"): 
+==========================================================================================
+  
+JobID            JobName NNodes NTasks  NCPUS       MaxRSS       AveRSS    Elapsed ExitCode
+------------- ---------- ------ ------ ------ ------------ ------------ ---------- --------
+1261456       run.sbatch      8          2048                             00:03:19      0:0
+1261456.0     aims.25013      8   1024   2048      172.34M      163.16M   00:03:17      0:0
+  
+Maximum memory per node: 23.131455 GB (defined as MaxRSS*Ntasks/NNodes)
+CPU utilization: 91.5 %
+  

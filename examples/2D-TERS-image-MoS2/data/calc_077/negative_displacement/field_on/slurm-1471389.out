@@ -1,0 +1,34 @@
+Currently Loaded Modulefiles:
+ 1) intel/2024.0   2) impi/2021.11   3) mkl/2024.0  
+ started at: Fri Apr 25 05:20:55 CEST 2025
+   hostname: vipc2342
+
+finished at: Fri Apr 25 05:24:19 CEST 2025
+                                  
+================================= 
+Global information about the job: 
+================================= 
+  
+Job owner: brek(84641)
+Job name:  /viper/ptmp1/brek/projects/ters/MoS2/pristine/ters-commensurate/calc_077/negative_displacement/field_on
+Node list: vipc[2342,2370,2372-2375,2378-2379]
+Job start: Fri Apr 25 05:20:53 CEST 2025
+Job end:   Fri Apr 25 05:24:19 CEST 2025
+Work dir:  /viper/ptmp1/brek/projects/ters/MoS2/pristine/ters-commensurate/calc_077/negative_displacement/field_on
+Command:   /viper/ptmp1/brek/projects/ters/MoS2/pristine/ters-commensurate/calc_077/negative_displacement/field_on/run.sbatch
+  
+  
+  
+==========================================================================================
+Information on jobsteps (Note: MaxRSS/AveRSS is the maximum/average over all 
+tasks of the per-task memory high-water marks; cf. "man sacct"): 
+==========================================================================================
+  
+JobID            JobName NNodes NTasks  NCPUS       MaxRSS       AveRSS    Elapsed ExitCode
+------------- ---------- ------ ------ ------ ------------ ------------ ---------- --------
+1471389       /viper/ptm      8          2048                             00:03:26      0:0
+1471389.0     aims.25013      8   1024   2048      171.49M      162.58M   00:03:24      0:0
+  
+Maximum memory per node: 23.016636 GB (defined as MaxRSS*Ntasks/NNodes)
+CPU utilization: 93.7 %
+  
